@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
-import intorzaLogo from "@/assets/intorza-logo.jpg";
+import intorzaLogo from "@/assets/intorza-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,21 +8,20 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { label: "Features", href: "#features" },
-      { label: "Pricing", href: "#pricing" },
       { label: "How It Works", href: "#how-it-works" },
       { label: "Testimonials", href: "#testimonials" },
     ],
     company: [
-      { label: "About Us", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "#contact" },
     ],
     legal: [
       { label: "Terms & Conditions", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
-      { label: "Cookie Policy", href: "#" },
-      { label: "Refund Policy", href: "#" },
+      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Refund Policy", href: "/refund" },
     ],
   };
 
@@ -35,7 +34,7 @@ const Footer = () => {
             <img
               src={intorzaLogo}
               alt="Intorza"
-              className="h-10 w-auto mb-6 brightness-0 invert"
+              className="h-12 w-auto mb-6 brightness-0 invert"
             />
             <p className="text-secondary-foreground/70 mb-6 max-w-sm">
               Streamline your interior business operations with Intorza. 
@@ -43,11 +42,11 @@ const Footer = () => {
             </p>
             <div className="space-y-3">
               <a
-                href="mailto:support@intorza.com"
+                href="mailto:intorza.com@gmail.com"
                 className="flex items-center gap-3 text-secondary-foreground/70 hover:text-primary transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                support@intorza.com
+                intorza.com@gmail.com
               </a>
               <a
                 href="tel:+919876543210"
@@ -86,23 +85,6 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
                   {link.href.startsWith("/") ? (
                     <Link
                       to={link.href}
@@ -118,6 +100,23 @@ const Footer = () => {
                       {link.label}
                     </a>
                   )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h4 className="font-display font-semibold text-lg mb-4">Legal</h4>
+            <ul className="space-y-3">
+              {footerLinks.legal.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-secondary-foreground/70 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

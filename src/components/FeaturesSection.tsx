@@ -6,8 +6,10 @@ import {
   Users, 
   UserPlus,
   BarChart3,
-  Shield
+  Shield,
+  ArrowRight
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import quotationPreview from "@/assets/quotation-preview.png";
 import invoicePreview from "@/assets/invoice-preview.png";
 import clientsPreview from "@/assets/clients-preview.png";
@@ -88,13 +90,13 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="group bg-card rounded-2xl p-6 border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="group bg-card rounded-2xl p-6 border border-border/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
                 <feature.icon className="w-6 h-6" />
               </div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -105,7 +107,7 @@ const FeaturesSection = () => {
         </div>
 
         {/* Feature Showcases */}
-        <div className="space-y-24">
+        <div className="space-y-32">
           {/* Quotation Builder Showcase */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
@@ -120,7 +122,7 @@ const FeaturesSection = () => {
                 customize pricing, apply discounts, and generate professional PDFs 
                 that impress your clients.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-3 mb-8">
                 {[
                   "Customizable quotation templates",
                   "Auto-calculate totals with tax",
@@ -135,14 +137,20 @@ const FeaturesSection = () => {
                   </li>
                 ))}
               </ul>
+              <Button variant="default" size="lg" asChild className="group">
+                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+                  Create Quotation
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
             </div>
             <div className="order-1 lg:order-2">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl group-hover:bg-primary/20 transition-colors duration-500" />
                 <img
                   src={quotationPreview}
                   alt="Quotation Builder"
-                  className="relative rounded-2xl shadow-lg border border-border"
+                  className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500"
                 />
               </div>
             </div>
@@ -151,12 +159,12 @@ const FeaturesSection = () => {
           {/* Invoice Management Showcase */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-secondary/10 rounded-3xl blur-2xl" />
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-secondary/10 rounded-3xl blur-2xl group-hover:bg-secondary/20 transition-colors duration-500" />
                 <img
                   src={invoicePreview}
                   alt="Invoice Management"
-                  className="relative rounded-2xl shadow-lg border border-border"
+                  className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500"
                 />
               </div>
             </div>
@@ -172,7 +180,7 @@ const FeaturesSection = () => {
                 payments, send reminders, and get a clear view of your outstanding 
                 balances.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-3 mb-8">
                 {[
                   "One-click invoice generation",
                   "Partial payment tracking",
@@ -187,6 +195,12 @@ const FeaturesSection = () => {
                   </li>
                 ))}
               </ul>
+              <Button variant="default" size="lg" asChild className="group">
+                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+                  Create Invoice
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
             </div>
           </div>
 
@@ -204,7 +218,7 @@ const FeaturesSection = () => {
                 project history, monitor billing status, and maintain detailed 
                 records for each relationship.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-3 mb-8">
                 {[
                   "Complete client profiles",
                   "Project history at a glance",
@@ -219,14 +233,20 @@ const FeaturesSection = () => {
                   </li>
                 ))}
               </ul>
+              <Button variant="default" size="lg" asChild className="group">
+                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+                  Manage Clients
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
             </div>
             <div className="order-1 lg:order-2">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl group-hover:bg-primary/20 transition-colors duration-500" />
                 <img
                   src={clientsPreview}
                   alt="Client Management"
-                  className="relative rounded-2xl shadow-lg border border-border"
+                  className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500"
                 />
               </div>
             </div>
