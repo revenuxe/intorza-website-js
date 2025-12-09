@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import intorzaLogo from "@/assets/intorza-logo.jpg";
+import intorzaLogo from "@/assets/intorza-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +19,7 @@ const Header = () => {
   const navLinks = [
     { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -43,13 +43,23 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200"
-            >
-              {link.label}
-            </a>
+            link.href.startsWith("/") ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            )
           ))}
         </nav>
 
@@ -61,7 +71,7 @@ const Header = () => {
           </Button>
           <Button variant="default" asChild>
             <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
-              Get Started Free
+              Create Quotation
             </a>
           </Button>
         </div>
@@ -85,14 +95,25 @@ const Header = () => {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md shadow-lg border-t border-border animate-fade-up">
           <nav className="container-custom py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              )
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
               <Button variant="outline" asChild className="w-full">
@@ -102,7 +123,7 @@ const Header = () => {
               </Button>
               <Button variant="default" asChild className="w-full">
                 <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
-                  Get Started Free
+                  Create Quotation
                 </a>
               </Button>
             </div>
