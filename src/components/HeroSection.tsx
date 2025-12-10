@@ -5,7 +5,7 @@ import dashboardPreview from "@/assets/dashboard-preview.png";
 const HeroSection = () => {
   const benefits = [
     "No credit card required",
-    "Free for first 1000 users",
+    "Setup in 2 minutes",
     "Instant access",
   ];
 
@@ -32,19 +32,19 @@ const HeroSection = () => {
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-intorza-green/10 text-intorza-green px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-up border border-intorza-green/20">
               <Sparkles className="w-4 h-4" />
-              Free for First 1000 Users - Limited Time!
+              #1 Interior Design Business Management Software
             </div>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-up">
-              Streamline Your{" "}
-              <span className="text-gradient">Interior Business</span>{" "}
-              Operations
+              Best{" "}
+              <span className="text-gradient">Interior Design Software</span>{" "}
+              for Project Management
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 animate-fade-up-delayed">
-              From site measurements to invoices, manage your entire interior design 
-              and contracting workflow in one powerful platform. Save time, reduce 
-              errors, and grow your business.
+              All-in-one interior design project management software with quotation builder, 
+              invoice generator, client management & team collaboration. Trusted by 500+ 
+              interior designers and contractors in India.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 animate-fade-up-delayed">
@@ -85,7 +85,7 @@ const HeroSection = () => {
               </div>
               <img
                 src={dashboardPreview}
-                alt="Intorza Dashboard"
+                alt="Interior Design Project Management Dashboard - Intorza"
                 className="w-full h-auto"
               />
             </div>
