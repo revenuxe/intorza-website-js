@@ -31,18 +31,18 @@ const CTASection = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full text-primary-foreground/90 text-sm font-medium mb-8 border border-primary-foreground/20">
             <Sparkles className="w-4 h-4" />
-            Free for First 1000 Users
+            Trusted by 500+ Interior Professionals
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Ready to Transform Your
+            Start Managing Your
             <br />
-            Interior Business?
+            Interior Projects Today
           </h2>
 
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-            Join hundreds of interior professionals who have streamlined their 
-            operations with Intorza. Get started today — completely free!
+            Join hundreds of interior designers and contractors who have streamlined their 
+            business operations with Intorza. Create professional quotations and invoices in minutes!
           </p>
 
           {/* Quick Action Buttons */}
@@ -68,7 +68,7 @@ const CTASection = () => {
               asChild
             >
               <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
-                Get Started Free
+                Get Started Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
@@ -92,11 +92,11 @@ const CTASection = () => {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-intorza-green animate-pulse" />
-              Free for first 1000 users
+              Setup in 2 minutes
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-intorza-green animate-pulse" />
-              Instant access
+              Cloud-based solution
             </div>
           </div>
         </div>
