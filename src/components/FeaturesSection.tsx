@@ -217,7 +217,7 @@ const FeaturesSection = () => {
                   <img
                     src={showcase.image}
                     alt={showcase.title}
-                    className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 w-full min-h-[400px] md:min-h-[500px] lg:min-h-[550px] object-cover object-top"
+                    className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 w-full h-auto object-cover object-top"
                   />
                 </div>
                 {/* CTA Button Below Image */}

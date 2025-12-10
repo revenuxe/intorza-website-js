@@ -21,7 +21,8 @@ import {
   Briefcase, 
   MessageSquare, 
   LogOut,
-  Loader2
+  Loader2,
+  Star
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import intorzaLogo from '@/assets/intorza-logo.png';
@@ -31,6 +32,7 @@ const menuItems = [
   { title: 'Blog Posts', url: '/admin/blogs', icon: FileText },
   { title: 'Job Listings', url: '/admin/careers', icon: Briefcase },
   { title: 'Inquiries', url: '/admin/inquiries', icon: MessageSquare },
+  { title: 'Feedback', url: '/admin/feedback', icon: Star },
 ];
 
 const AdminLayout = () => {

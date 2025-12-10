@@ -22,6 +22,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminBlogs from "./pages/admin/AdminBlogs";
 import AdminCareers from "./pages/admin/AdminCareers";
 import AdminInquiries from "./pages/admin/AdminInquiries";
+import AdminFeedback from "./pages/admin/AdminFeedback";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="blogs" element={<AdminBlogs />} />
               <Route path="careers" element={<AdminCareers />} />
               <Route path="inquiries" element={<AdminInquiries />} />
+              <Route path="feedback" element={<AdminFeedback />} />
             </Route>
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
