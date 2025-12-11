@@ -4,23 +4,23 @@ import { Button } from "@/components/ui/button";
 const steps = [
   {
     number: "01",
-    title: "Sign Up & Setup",
-    description: "Create your account in minutes. Add your company details, team members, and customize your quotation templates.",
+    title: "Create Quotation",
+    description: "Build professional quotations with our intuitive builder. Add items, pricing, and customize templates for your clients.",
   },
   {
     number: "02",
-    title: "Capture Site Details",
-    description: "Use our site measurement tool to record dimensions, requirements, and project specifics during client visits.",
+    title: "Login",
+    description: "Sign up and log in to your secure Intorza account. Access your dashboard from anywhere, anytime.",
   },
   {
     number: "03",
-    title: "Generate Quotations",
-    description: "Build professional quotations with our intuitive builder. Add items, pricing, and send directly to clients.",
+    title: "Save & Send",
+    description: "Save your quotations and send them directly to clients via email or share a professional link.",
   },
   {
     number: "04",
-    title: "Track & Invoice",
-    description: "Convert accepted quotations to invoices, track payments, and manage your entire project lifecycle.",
+    title: "Manage Invoices",
+    description: "Convert accepted quotations to invoices, track payments, and manage your entire billing lifecycle.",
   },
 ];
 
