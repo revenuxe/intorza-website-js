@@ -25,7 +25,7 @@ const Footer = () => {
       href: "/blog"
     }, {
       label: "Contact",
-      href: "#contact"
+      href: "/contact"
     }],
     legal: [{
       label: "Terms & Conditions",

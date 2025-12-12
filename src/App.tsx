@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+import Contact from "./pages/Contact";
 import Cookies from "./pages/Cookies";
 import Refund from "./pages/Refund";
 import NotFound from "./pages/NotFound";
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/careers" element={<Careers />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogDetail />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/cookies" element={<Cookies />} />
               <Route path="/refund" element={<Refund />} />
               
