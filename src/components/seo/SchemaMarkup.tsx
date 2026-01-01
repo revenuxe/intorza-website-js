@@ -94,6 +94,7 @@ export const SoftwareApplicationSchema = () => {
           "@type": "Rating",
           ratingValue: "5",
           bestRating: "5",
+          worstRating: "1",
         },
         author: {
           "@type": "Person",
@@ -108,6 +109,7 @@ export const SoftwareApplicationSchema = () => {
           "@type": "Rating",
           ratingValue: "5",
           bestRating: "5",
+          worstRating: "1",
         },
         author: {
           "@type": "Person",
@@ -122,6 +124,7 @@ export const SoftwareApplicationSchema = () => {
           "@type": "Rating",
           ratingValue: "5",
           bestRating: "5",
+          worstRating: "1",
         },
         author: {
           "@type": "Person",
@@ -339,42 +342,53 @@ export const ProductSchema = ({
   name,
   description,
   image,
+  url = "https://intorza.com",
   price = "0",
   rating = "4.9",
-  reviewCount = "547",
+  ratingCount = "547",
+  reviewCount = "423",
 }: {
   name: string;
   description: string;
   image: string;
+  url?: string;
   price?: string;
   rating?: string;
+  ratingCount?: string;
   reviewCount?: string;
 }) => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${url}/#product`,
     name: name,
     description: description,
     image: image,
+    url: url,
     brand: {
       "@type": "Brand",
       name: "Intorza",
     },
     offers: {
       "@type": "Offer",
+      url: "https://app.intorza.com",
       price: price,
       priceCurrency: "INR",
       availability: "https://schema.org/InStock",
+      priceValidUntil: "2026-12-31",
       seller: {
         "@type": "Organization",
         name: "Intorza",
+        url: "https://intorza.com",
       },
     },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: rating,
+      ratingCount: ratingCount,
       reviewCount: reviewCount,
       bestRating: "5",
+      worstRating: "1",
     },
   };
 
