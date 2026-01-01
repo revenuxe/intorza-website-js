@@ -92,7 +92,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md shadow-lg border-t border-border animate-fade-up">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-background shadow-lg border-t border-border animate-fade-up z-50">
           <nav className="container-custom py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
               link.href.startsWith("/") ? (
