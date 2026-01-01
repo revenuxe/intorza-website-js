@@ -2,6 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Clock, Briefcase } from "lucide-react";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { OrganizationSchema } from "@/components/seo/SchemaMarkup";
 
 const Careers = () => {
   const openPositions = [
@@ -36,8 +39,18 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Careers at Intorza - Join Our Team"
+        description="Join Intorza and help build the future of interior design business management. Explore open positions in engineering, design, marketing, and more."
+        keywords="intorza careers, interior design software jobs, tech jobs India, remote developer jobs, startup jobs Bangalore"
+        canonicalUrl="https://intorza.com/careers"
+      />
+      <OrganizationSchema />
       <Header />
       <main className="pt-24">
+        <div className="container-custom py-4">
+          <Breadcrumbs items={[{ name: "Careers", url: "https://intorza.com/careers" }]} />
+        </div>
         {/* Hero Section */}
         <section className="section-padding bg-gradient-hero">
           <div className="container-custom">

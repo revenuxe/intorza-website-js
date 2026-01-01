@@ -2,6 +2,24 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Target, Eye, Heart, Users, Award, Zap } from "lucide-react";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { OrganizationSchema, FAQSchema } from "@/components/seo/SchemaMarkup";
+
+const aboutFAQs = [
+  {
+    question: "Who founded Intorza?",
+    answer: "Intorza was founded by a team of passionate entrepreneurs who saw the need for a better business management solution specifically designed for interior designers and contractors in India.",
+  },
+  {
+    question: "Where is Intorza based?",
+    answer: "Intorza is headquartered in India, with a distributed team working across multiple cities. We serve interior designers and contractors throughout India and internationally.",
+  },
+  {
+    question: "What is Intorza's mission?",
+    answer: "Our mission is to provide interior professionals with powerful, easy-to-use tools that streamline their business operations, reduce administrative burden, and help them focus on creativity and client satisfaction.",
+  },
+];
 
 const About = () => {
   const values = [
@@ -31,8 +49,19 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="About Intorza - Our Mission to Empower Interior Designers"
+        description="Learn about Intorza's mission to simplify business operations for interior designers and contractors. Discover our story, values, and commitment to the interior design industry."
+        keywords="about intorza, interior design software company, intorza mission, interior business management, quotation software India"
+        canonicalUrl="https://intorza.com/about"
+      />
+      <OrganizationSchema />
+      <FAQSchema faqs={aboutFAQs} />
       <Header />
       <main className="pt-24">
+        <div className="container-custom py-4">
+          <Breadcrumbs items={[{ name: "About Us", url: "https://intorza.com/about" }]} />
+        </div>
         {/* Hero Section */}
         <section className="section-padding bg-gradient-hero">
           <div className="container-custom">
