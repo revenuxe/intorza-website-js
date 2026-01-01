@@ -163,7 +163,8 @@
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
-            "bestRating": "5"
+            "bestRating": "5",
+            "worstRating": "1"
           },
           "author": {
             "@type": "Person",
@@ -177,7 +178,8 @@
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
-            "bestRating": "5"
+            "bestRating": "5",
+            "worstRating": "1"
           },
           "author": {
             "@type": "Person",
@@ -191,7 +193,8 @@
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
-            "bestRating": "5"
+            "bestRating": "5",
+            "worstRating": "1"
           },
           "author": {
             "@type": "Person",
@@ -258,6 +261,7 @@
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": "https://intorza.com/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -394,8 +398,10 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
+      "@id": "https://intorza.com/#product-quotation",
       "name": "Intorza Quotation Builder",
       "description": "Professional quotation builder for interior designers with customizable templates, auto-calculations, and PDF export",
+      "url": "https://intorza.com",
       "brand": {
         "@type": "Brand",
         "name": "Intorza"
@@ -404,20 +410,42 @@
       "image": "https://intorza.com/quotation-preview.png",
       "offers": {
         "@type": "Offer",
+        "url": "https://app.intorza.com",
         "price": "0",
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31",
         "seller": {
           "@type": "Organization",
-          "name": "Intorza"
+          "name": "Intorza",
+          "url": "https://intorza.com"
         }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
+        "ratingCount": "547",
         "reviewCount": "423",
-        "bestRating": "5"
-      }
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Vikram Patel"
+          },
+          "datePublished": "2024-12-01",
+          "reviewBody": "The quotation builder is incredibly intuitive. I can create professional proposals in minutes!"
+        }
+      ]
     }
     </script>
 
