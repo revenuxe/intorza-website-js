@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import ProCTA from "@/components/ProCTA";
 import FeedbackCTA from "@/components/FeedbackCTA";
 import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
@@ -21,9 +22,10 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <FeedbackCTA />
+        <ProCTA />
         <FeaturesSection />
         <HowItWorksSection />
+        <FeedbackCTA />
         <TestimonialsSection />
         <CTASection />
       </main>

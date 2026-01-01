@@ -1,0 +1,94 @@
+import { Button } from "@/components/ui/button";
+import { Sparkles, Crown, Zap } from "lucide-react";
+
+const ProCTA = () => {
+  return (
+    <section className="relative py-16 md:py-20 overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-intorza-navy" />
+      
+      {/* Floating elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-intorza-amber/20 rounded-full blur-2xl animate-pulse delay-300" />
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg animate-bounce" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-intorza-amber/10 rounded-full blur-xl animate-bounce delay-500" style={{ animationDuration: '4s' }} />
+      </div>
+
+      {/* Sparkle decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Sparkles className="absolute top-8 right-[20%] w-6 h-6 text-intorza-amber/60 animate-pulse" />
+        <Sparkles className="absolute bottom-12 left-[15%] w-5 h-5 text-white/40 animate-pulse delay-200" />
+        <Sparkles className="absolute top-1/3 left-[10%] w-4 h-4 text-intorza-amber/40 animate-pulse delay-500" />
+      </div>
+
+      <div className="container-custom relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-up">
+            <Crown className="w-4 h-4 text-intorza-amber" />
+            <span className="text-white/90 text-sm font-medium">Limited Time Offer</span>
+            <Zap className="w-4 h-4 text-intorza-amber" />
+          </div>
+
+          {/* Price highlight */}
+          <div className="mb-6 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="inline-block relative">
+              <span className="text-5xl md:text-7xl font-display font-bold text-white">
+                ₹1
+              </span>
+              <span className="text-xl md:text-2xl text-white/80 ml-2">
+                INR / Month
+              </span>
+            </div>
+          </div>
+
+          {/* Headline */}
+          <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-4 animate-fade-up" style={{ animationDelay: '200ms' }}>
+            Unlock <span className="text-intorza-amber">Pro Features</span> Today
+          </h2>
+
+          {/* Subtext */}
+          <p className="text-white/80 text-lg md:text-xl mb-8 max-w-xl mx-auto animate-fade-up" style={{ animationDelay: '300ms' }}>
+            Get unlimited quotations, advanced invoicing, team collaboration & priority support
+          </p>
+
+          {/* CTA Button */}
+          <div className="animate-fade-up" style={{ animationDelay: '400ms' }}>
+            <Button
+              asChild
+              size="lg"
+              className="group relative bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg font-semibold rounded-xl shadow-2xl shadow-black/20 transition-all duration-300 hover:scale-105 hover:shadow-intorza-amber/30"
+            >
+              <a href="https://app.intorza.com/" target="_blank" rel="noopener noreferrer">
+                <Crown className="w-5 h-5 mr-2 text-intorza-amber group-hover:animate-bounce" />
+                Get Pro Now
+                <span className="absolute -top-2 -right-2 bg-intorza-amber text-white text-xs px-2 py-1 rounded-full font-bold animate-pulse">
+                  99% OFF
+                </span>
+              </a>
+            </Button>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-white/60 text-sm animate-fade-up" style={{ animationDelay: '500ms' }}>
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 bg-green-400 rounded-full" />
+              Cancel Anytime
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 bg-green-400 rounded-full" />
+              No Hidden Fees
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 bg-green-400 rounded-full" />
+              Instant Access
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProCTA;
