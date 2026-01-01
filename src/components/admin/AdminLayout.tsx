@@ -25,7 +25,7 @@ import {
   Star
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import intorzaLogo from '@/assets/intorza-logo.png';
+import intorzaLogo from '@/assets/intorza-logo.webp';
 
 const menuItems = [
   { title: 'Dashboard', url: '/admin', icon: LayoutDashboard },
