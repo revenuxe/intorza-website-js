@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Lock, Mail } from 'lucide-react';
-import intorzaLogo from '@/assets/intorza-logo.png';
+import intorzaLogo from '@/assets/intorza-logo.webp';
 import { z } from 'zod';
 
 const loginSchema = z.object({
