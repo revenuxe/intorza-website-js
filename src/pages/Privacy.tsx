@@ -2,13 +2,22 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Privacy Policy - How Intorza Protects Your Data"
+        description="Learn how Intorza collects, uses, and protects your personal and business data. Our privacy policy explains your rights and our data security practices."
+        keywords="intorza privacy policy, data protection, GDPR compliance, data security, personal information protection, business data privacy"
+        canonicalUrl="https://intorza.com/privacy"
+      />
       <Header />
       <main className="pt-32 pb-20">
         <div className="container-custom max-w-4xl">
+          <Breadcrumbs items={[{ name: "Privacy Policy", url: "https://intorza.com/privacy" }]} className="mb-8" />
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8"

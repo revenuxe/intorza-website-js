@@ -1,13 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 const Cookies = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Cookie Policy - How Intorza Uses Cookies"
+        description="Understand how Intorza uses cookies and tracking technologies. Learn about cookie types, how to manage them, and your privacy choices."
+        keywords="intorza cookie policy, website cookies, tracking technologies, cookie consent, browser cookies, analytics cookies"
+        canonicalUrl="https://intorza.com/cookies"
+      />
       <Header />
       <main className="pt-24">
         <section className="section-padding">
           <div className="container-custom max-w-4xl">
+            <Breadcrumbs items={[{ name: "Cookie Policy", url: "https://intorza.com/cookies" }]} className="mb-8" />
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8">
               Cookie Policy
             </h1>
