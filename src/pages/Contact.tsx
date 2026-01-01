@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +11,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import intorzaLogo from "@/assets/intorza-logo.webp";
+import SEOHead from "@/components/seo/SEOHead";
+import { OrganizationSchema, LocalBusinessSchema } from "@/components/seo/SchemaMarkup";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
@@ -91,15 +92,14 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us - Intorza | Get in Touch with Our Team</title>
-        <meta
-          name="description"
-          content="Have questions about Intorza? Contact our team for support, partnerships, or general inquiries. We're here to help streamline your interior design business."
-        />
-        <meta name="keywords" content="contact intorza, interior design software support, business management help, customer service" />
-        <link rel="canonical" href="https://intorza.com/contact" />
-      </Helmet>
+      <SEOHead
+        title="Contact Us - Get in Touch with Intorza Team"
+        description="Have questions about Intorza? Contact our team for support, partnerships, or general inquiries. We're here to help streamline your interior design business."
+        keywords="contact intorza, interior design software support, business management help, customer service, intorza support"
+        canonicalUrl="https://intorza.com/contact"
+      />
+      <OrganizationSchema />
+      <LocalBusinessSchema />
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
