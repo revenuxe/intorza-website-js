@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import intorzaLogo from "@/assets/intorza-logo.png";
+import intorzaLogo from "@/assets/intorza-logo.webp";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
