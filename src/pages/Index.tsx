@@ -11,28 +11,8 @@ import {
   OrganizationSchema,
   SoftwareApplicationSchema,
   WebSiteSchema,
-  FAQSchema,
   HowToSchema,
 } from "@/components/seo/SchemaMarkup";
-
-const homepageFAQs = [
-  {
-    question: "What is Intorza?",
-    answer: "Intorza is India's #1 all-in-one interior design project management software that helps interior designers and contractors manage quotations, invoices, clients, and team members efficiently.",
-  },
-  {
-    question: "Is Intorza free to use?",
-    answer: "Yes, Intorza offers a generous free plan that includes core features like quotation builder, invoice management, and client management.",
-  },
-  {
-    question: "Can I create professional quotations with Intorza?",
-    answer: "Yes, Intorza has a powerful quotation builder with customizable templates, room-wise categorization, auto-calculations, and professional PDF export features.",
-  },
-  {
-    question: "Does Intorza support GST invoicing?",
-    answer: "Yes, Intorza fully supports GST invoicing for Indian businesses with proper tax calculations, GSTIN display, and HSN/SAC codes.",
-  },
-];
 
 const howToSteps = [
   { name: "Sign Up", text: "Create your free Intorza account in seconds. No credit card required." },
@@ -54,7 +34,6 @@ const Index = () => {
       <OrganizationSchema />
       <SoftwareApplicationSchema />
       <WebSiteSchema />
-      <FAQSchema faqs={homepageFAQs} />
       <HowToSchema
         name="How to Get Started with Intorza"
         description="Learn how to start using Intorza for your interior design business in 4 simple steps"
