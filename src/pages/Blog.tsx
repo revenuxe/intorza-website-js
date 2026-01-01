@@ -13,8 +13,8 @@ interface BlogPost {
   slug: string;
   excerpt: string | null;
   cover_image: string | null;
-  published_at: string | null;
   created_at: string;
+  updated_at: string;
   content: string;
 }
 
@@ -28,7 +28,7 @@ const Blog = () => {
         .from("blog_posts")
         .select("*")
         .eq("published", true)
-        .order("published_at", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (!error && data) {
         setPosts(data);
@@ -154,7 +154,7 @@ const Blog = () => {
                           <div className="flex items-center gap-4">
                             <span className="flex items-center gap-1">
                               <Calendar className="w-4 h-4" />
-                              {formatDate(post.published_at || post.created_at)}
+                              {formatDate(post.created_at)}
                             </span>
                             <span className="flex items-center gap-1">
                               <Clock className="w-4 h-4" />

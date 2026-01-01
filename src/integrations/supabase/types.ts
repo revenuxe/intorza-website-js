@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
+    PostgrestVersion: "14.1"
   }
   public: {
     Tables: {
@@ -22,8 +22,7 @@ export type Database = {
           created_at: string
           excerpt: string | null
           id: string
-          published: boolean | null
-          published_at: string | null
+          published: boolean
           slug: string
           title: string
           updated_at: string
@@ -35,8 +34,7 @@ export type Database = {
           created_at?: string
           excerpt?: string | null
           id?: string
-          published?: boolean | null
-          published_at?: string | null
+          published?: boolean
           slug: string
           title: string
           updated_at?: string
@@ -48,8 +46,7 @@ export type Database = {
           created_at?: string
           excerpt?: string | null
           id?: string
-          published?: boolean | null
-          published_at?: string | null
+          published?: boolean
           slug?: string
           title?: string
           updated_at?: string
@@ -62,7 +59,7 @@ export type Database = {
           email: string | null
           id: string
           message: string | null
-          name: string
+          name: string | null
           rating: number
         }
         Insert: {
@@ -70,7 +67,7 @@ export type Database = {
           email?: string | null
           id?: string
           message?: string | null
-          name: string
+          name?: string | null
           rating: number
         }
         Update: {
@@ -78,7 +75,7 @@ export type Database = {
           email?: string | null
           id?: string
           message?: string | null
-          name?: string
+          name?: string | null
           rating?: number
         }
         Relationships: []
@@ -90,7 +87,7 @@ export type Database = {
           id: string
           message: string
           name: string
-          read: boolean | null
+          read: boolean
           subject: string | null
         }
         Insert: {
@@ -99,7 +96,7 @@ export type Database = {
           id?: string
           message: string
           name: string
-          read?: boolean | null
+          read?: boolean
           subject?: string | null
         }
         Update: {
@@ -108,7 +105,7 @@ export type Database = {
           id?: string
           message?: string
           name?: string
-          read?: boolean | null
+          read?: boolean
           subject?: string | null
         }
         Relationships: []
@@ -117,43 +114,37 @@ export type Database = {
         Row: {
           benefits: string | null
           created_at: string
-          department: string | null
           description: string
           id: string
-          location: string | null
-          published: boolean | null
+          location: string
+          published: boolean
           requirements: string | null
-          salary_range: string | null
           title: string
-          type: string | null
+          type: string
           updated_at: string
         }
         Insert: {
           benefits?: string | null
           created_at?: string
-          department?: string | null
           description: string
           id?: string
-          location?: string | null
-          published?: boolean | null
+          location: string
+          published?: boolean
           requirements?: string | null
-          salary_range?: string | null
           title: string
-          type?: string | null
+          type?: string
           updated_at?: string
         }
         Update: {
           benefits?: string | null
           created_at?: string
-          department?: string | null
           description?: string
           id?: string
-          location?: string | null
-          published?: boolean | null
+          location?: string
+          published?: boolean
           requirements?: string | null
-          salary_range?: string | null
           title?: string
-          type?: string | null
+          type?: string
           updated_at?: string
         }
         Relationships: []
