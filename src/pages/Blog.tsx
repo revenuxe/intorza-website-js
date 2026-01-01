@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Clock, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { Helmet } from "react-helmet-async";
 
 interface BlogPost {
   id: string;
@@ -57,24 +59,20 @@ const Blog = () => {
 
   return (
     <>
+      <SEOHead
+        title="Blog - Interior Design Business Insights, Tips & Strategies"
+        description="Expert tips, strategies, and industry insights for interior designers and contractors. Learn how to grow your business, manage clients, and create stunning designs with Intorza."
+        keywords="interior design blog, interior design tips, contractor business tips, quotation software guide, invoice management tips, interior design trends 2025, business growth strategies"
+        canonicalUrl="https://intorza.com/blog"
+        ogType="website"
+      />
       <Helmet>
-        <title>Blog | Intorza - Interior Design Business Insights & Tips</title>
-        <meta
-          name="description"
-          content="Expert tips, strategies, and industry insights for interior designers and contractors. Learn how to grow your business with Intorza."
-        />
-        <meta
-          name="keywords"
-          content="interior design blog, contractor tips, quotation software, invoice management, business growth"
-        />
-        <link rel="canonical" href="https://intorza.com/blog" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
             name: "Intorza Blog",
-            description:
-              "Tips, strategies, and industry insights for interior design professionals",
+            description: "Tips, strategies, and industry insights for interior design professionals",
             url: "https://intorza.com/blog",
             publisher: {
               "@type": "Organization",
@@ -91,6 +89,9 @@ const Blog = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-24">
+          <div className="container-custom py-4">
+            <Breadcrumbs items={[{ name: "Blog", url: "https://intorza.com/blog" }]} />
+          </div>
           {/* Hero Section */}
           <section className="section-padding bg-gradient-hero">
             <div className="container-custom">

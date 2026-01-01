@@ -1,13 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 const Refund = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Refund Policy - Intorza Subscription Refunds"
+        description="Read Intorza's refund policy for subscription plans. Learn about eligibility, refund process, and timelines for requesting a refund."
+        keywords="intorza refund policy, subscription refund, money back guarantee, cancellation policy, payment refund"
+        canonicalUrl="https://intorza.com/refund"
+      />
       <Header />
       <main className="pt-24">
         <section className="section-padding">
           <div className="container-custom max-w-4xl">
+            <Breadcrumbs items={[{ name: "Refund Policy", url: "https://intorza.com/refund" }]} className="mb-8" />
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8">
               Refund Policy
             </h1>

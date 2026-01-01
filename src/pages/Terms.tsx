@@ -2,13 +2,22 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/seo/SEOHead";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 
 const Terms = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Terms & Conditions - Intorza Service Agreement"
+        description="Read Intorza's Terms and Conditions. Understand your rights and responsibilities when using our interior design project management software and services."
+        keywords="intorza terms of service, terms and conditions, user agreement, service terms, software license agreement"
+        canonicalUrl="https://intorza.com/terms"
+      />
       <Header />
       <main className="pt-32 pb-20">
         <div className="container-custom max-w-4xl">
+          <Breadcrumbs items={[{ name: "Terms & Conditions", url: "https://intorza.com/terms" }]} className="mb-8" />
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8"

@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { ArticleSchema } from "@/components/seo/SchemaMarkup";
 
 interface BlogPost {
   id: string;
@@ -167,6 +169,13 @@ const BlogDetail = () => {
           <section className="section-padding bg-gradient-hero">
             <div className="container-custom">
               <div className="max-w-4xl mx-auto">
+                <Breadcrumbs 
+                  items={[
+                    { name: "Blog", url: "https://intorza.com/blog" },
+                    { name: post.title, url: `https://intorza.com/blog/${post.slug}` }
+                  ]} 
+                  className="mb-6"
+                />
                 <Link
                   to="/blog"
                   className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8"
