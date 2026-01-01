@@ -35,8 +35,8 @@ interface BlogPost {
   content: string;
   cover_image: string | null;
   published: boolean | null;
-  published_at: string | null;
   created_at: string;
+  updated_at: string;
 }
 
 const AdminBlogs = () => {
@@ -178,7 +178,6 @@ const AdminBlogs = () => {
       content: formData.content,
       cover_image: formData.cover_image || null,
       published: formData.published,
-      published_at: formData.published ? new Date().toISOString() : null,
       author_id: user?.id,
     };
 
@@ -224,8 +223,7 @@ const AdminBlogs = () => {
     const { error } = await supabase
       .from('blog_posts')
       .update({ 
-        published: !post.published,
-        published_at: !post.published ? new Date().toISOString() : null
+        published: !post.published
       })
       .eq('id', post.id);
 

@@ -35,15 +35,14 @@ import { format } from 'date-fns';
 interface JobListing {
   id: string;
   title: string;
-  department: string | null;
-  location: string | null;
-  type: string | null;
+  location: string;
+  type: string;
   description: string;
   requirements: string | null;
   benefits: string | null;
-  salary_range: string | null;
   published: boolean | null;
   created_at: string;
+  updated_at: string;
 }
 
 const jobTypes = ['Full-time', 'Part-time', 'Contract', 'Freelance', 'Internship', 'Remote'];
@@ -56,13 +55,11 @@ const AdminCareers = () => {
   const [editingJob, setEditingJob] = useState<JobListing | null>(null);
   const [formData, setFormData] = useState({
     title: '',
-    department: '',
     location: '',
     type: 'Full-time',
     description: '',
     requirements: '',
     benefits: '',
-    salary_range: '',
     published: false,
   });
 
@@ -89,13 +86,11 @@ const AdminCareers = () => {
   const resetForm = () => {
     setFormData({
       title: '',
-      department: '',
       location: '',
       type: 'Full-time',
       description: '',
       requirements: '',
       benefits: '',
-      salary_range: '',
       published: false,
     });
     setEditingJob(null);
@@ -105,13 +100,11 @@ const AdminCareers = () => {
     setEditingJob(job);
     setFormData({
       title: job.title,
-      department: job.department || '',
       location: job.location || '',
       type: job.type || 'Full-time',
       description: job.description,
       requirements: job.requirements || '',
       benefits: job.benefits || '',
-      salary_range: job.salary_range || '',
       published: job.published || false,
     });
     setDialogOpen(true);
@@ -123,13 +116,11 @@ const AdminCareers = () => {
 
     const jobData = {
       title: formData.title,
-      department: formData.department || null,
-      location: formData.location || null,
+      location: formData.location,
       type: formData.type,
       description: formData.description,
       requirements: formData.requirements || null,
       benefits: formData.benefits || null,
-      salary_range: formData.salary_range || null,
       published: formData.published,
     };
 
@@ -206,26 +197,15 @@ const AdminCareers = () => {
               <DialogTitle>{editingJob ? 'Edit Job Listing' : 'Create New Job'}</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="title">Job Title</Label>
-                  <Input
-                    id="title"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    placeholder="e.g., Senior Interior Designer"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="department">Department</Label>
-                  <Input
-                    id="department"
-                    value={formData.department}
-                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                    placeholder="e.g., Design Team"
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="title">Job Title</Label>
+                <Input
+                  id="title"
+                  value={formData.title}
+                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  placeholder="e.g., Senior Interior Designer"
+                  required
+                />
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -235,6 +215,7 @@ const AdminCareers = () => {
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                     placeholder="e.g., Mumbai, India"
+                    required
                   />
                 </div>
                 <div className="space-y-2">
@@ -253,15 +234,6 @@ const AdminCareers = () => {
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="salary_range">Salary Range</Label>
-                <Input
-                  id="salary_range"
-                  value={formData.salary_range}
-                  onChange={(e) => setFormData({ ...formData, salary_range: e.target.value })}
-                  placeholder="e.g., ₹5,00,000 - ₹8,00,000 per annum"
-                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">Job Description</Label>
@@ -343,9 +315,6 @@ const AdminCareers = () => {
                     <TableCell>
                       <div>
                         <p className="font-medium">{job.title}</p>
-                        {job.department && (
-                          <p className="text-sm text-muted-foreground">{job.department}</p>
-                        )}
                       </div>
                     </TableCell>
                     <TableCell>

@@ -14,8 +14,8 @@ interface BlogPost {
   excerpt: string | null;
   content: string;
   cover_image: string | null;
-  published_at: string | null;
   created_at: string;
+  updated_at: string;
 }
 
 const BlogDetail = () => {
@@ -137,8 +137,8 @@ const BlogDetail = () => {
             "@type": "BlogPosting",
             headline: post.title,
             description: post.excerpt || post.content.substring(0, 160),
-            datePublished: post.published_at || post.created_at,
-            dateModified: post.created_at,
+            datePublished: post.created_at,
+            dateModified: post.updated_at,
             author: {
               "@type": "Organization",
               name: "Intorza",
@@ -182,7 +182,7 @@ const BlogDetail = () => {
                 <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
                   <span className="flex items-center gap-2">
                     <Calendar className="w-5 h-5" />
-                    {formatDate(post.published_at || post.created_at)}
+                    {formatDate(post.created_at)}
                   </span>
                   <span className="flex items-center gap-2">
                     <Clock className="w-5 h-5" />
