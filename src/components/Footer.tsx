@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
-import intorzaLogo from "@/assets/intorza-logo.png";
+import intorzaLogo from "@/assets/intorza-logo.webp";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const footerLinks = {
