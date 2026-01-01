@@ -349,15 +349,24 @@ const BlogDetail = () => {
   );
 };
 
-// Helper function to format content with proper HTML
+// Helper function to clean and format content with proper HTML
 const formatContent = (content: string): string => {
+  // Remove META_ prefixes that AI might include in the content
+  let cleanedContent = content
+    .replace(/^META_TITLE:\s*.+$/gm, '')
+    .replace(/^META_DESCRIPTION:\s*.+$/gm, '')
+    .replace(/^EXCERPT:\s*.+$/gm, '')
+    .replace(/^TITLE:\s*.+$/gm, '')
+    .replace(/^DESCRIPTION:\s*.+$/gm, '')
+    .trim();
+
   // If content is already HTML with proper tags, return as-is
-  if (content.includes("<article") || (content.includes("<h1") && content.includes("<p>"))) {
-    return content;
+  if (cleanedContent.includes("<article") || (cleanedContent.includes("<h1") && cleanedContent.includes("<p>"))) {
+    return cleanedContent;
   }
 
   // Convert markdown-like content to beautiful HTML
-  let html = content
+  let html = cleanedContent
     // Code blocks (before other transformations)
     .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="code-block"><code>$2</code></pre>')
     // Inline code
