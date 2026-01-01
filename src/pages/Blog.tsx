@@ -81,7 +81,7 @@ const Blog = () => {
               name: "Intorza",
               logo: {
                 "@type": "ImageObject",
-                url: "https://intorza.com/intorza-logo.png",
+                url: "https://intorza.com/intorza-logo.webp",
               },
             },
           })}

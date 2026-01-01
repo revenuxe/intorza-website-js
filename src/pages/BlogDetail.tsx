@@ -148,7 +148,7 @@ const BlogDetail = () => {
               name: "Intorza",
               logo: {
                 "@type": "ImageObject",
-                url: "https://intorza.com/intorza-logo.png",
+                url: "https://intorza.com/intorza-logo.webp",
               },
             },
             mainEntityOfPage: {
@@ -207,24 +207,37 @@ const BlogDetail = () => {
           )}
 
           {/* Content */}
-          <section className="section-padding">
+          <section className="py-12 md:py-16 lg:py-20">
             <div className="container-custom">
               <div className="max-w-4xl mx-auto">
-                <div className="grid lg:grid-cols-[1fr_auto] gap-12">
+                <div className="grid lg:grid-cols-[1fr_280px] gap-8 lg:gap-12">
                   {/* Main Content */}
-                  <article className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-foreground prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-li:marker:text-primary prose-blockquote:border-primary prose-blockquote:bg-muted/30 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:italic prose-code:bg-muted prose-code:px-2 prose-code:py-0.5 prose-code:rounded prose-pre:bg-muted prose-img:rounded-xl prose-img:shadow-lg">
+                  <article className="blog-article">
                     <div
                       className="blog-content"
                       dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
                     />
+                    
+                    {/* Author Card */}
+                    <div className="mt-12 pt-8 border-t border-border">
+                      <div className="flex items-center gap-4 p-6 bg-muted/30 rounded-2xl">
+                        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                          <span className="text-2xl font-bold text-primary">I</span>
+                        </div>
+                        <div>
+                          <p className="font-display font-semibold text-foreground">Intorza Team</p>
+                          <p className="text-sm text-muted-foreground">Expert insights for interior design professionals</p>
+                        </div>
+                      </div>
+                    </div>
                   </article>
 
                   {/* Sidebar */}
-                  <aside className="lg:w-64 space-y-8">
-                    {/* Share */}
-                    <div className="bg-card rounded-2xl p-6 border border-border sticky top-28">
+                  <aside className="space-y-6">
+                    {/* Share Card */}
+                    <div className="bg-card rounded-2xl p-6 border border-border sticky top-28 shadow-sm">
                       <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
-                        <Share2 className="w-5 h-5" />
+                        <Share2 className="w-5 h-5 text-primary" />
                         Share Article
                       </h3>
                       <div className="flex gap-3">
@@ -232,7 +245,7 @@ const BlogDetail = () => {
                           href={shareLinks.facebook}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+                          className="w-11 h-11 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:opacity-80 hover:scale-110 transition-all"
                         >
                           <Facebook className="w-5 h-5" />
                         </a>
@@ -240,7 +253,7 @@ const BlogDetail = () => {
                           href={shareLinks.twitter}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-[#1DA1F2] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+                          className="w-11 h-11 rounded-full bg-[#1DA1F2] flex items-center justify-center text-white hover:opacity-80 hover:scale-110 transition-all"
                         >
                           <Twitter className="w-5 h-5" />
                         </a>
@@ -248,10 +261,22 @@ const BlogDetail = () => {
                           href={shareLinks.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+                          className="w-11 h-11 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-80 hover:scale-110 transition-all"
                         >
                           <Linkedin className="w-5 h-5" />
                         </a>
+                      </div>
+                      
+                      {/* Quick Stats */}
+                      <div className="mt-6 pt-6 border-t border-border space-y-3">
+                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <Clock className="w-4 h-4" />
+                          <span>{estimateReadTime(post.content)}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                          <Calendar className="w-4 h-4" />
+                          <span>{formatDate(post.created_at)}</span>
+                        </div>
                       </div>
                     </div>
                   </aside>
@@ -326,41 +351,69 @@ const BlogDetail = () => {
 
 // Helper function to format content with proper HTML
 const formatContent = (content: string): string => {
-  // If content is already HTML, return as-is
-  if (content.includes("<h1") || content.includes("<h2") || content.includes("<p>")) {
+  // If content is already HTML with proper tags, return as-is
+  if (content.includes("<article") || (content.includes("<h1") && content.includes("<p>"))) {
     return content;
   }
 
-  // Convert markdown-like content to HTML
+  // Convert markdown-like content to beautiful HTML
   let html = content
-    // Headers
-    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
-    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    // Code blocks (before other transformations)
+    .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="code-block"><code>$2</code></pre>')
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
+    // Headers with proper IDs for TOC linking
+    .replace(/^### (.+)$/gm, (_, text) => `<h3 id="${text.toLowerCase().replace(/[^a-z0-9]+/g, '-')}">${text}</h3>`)
+    .replace(/^## (.+)$/gm, (_, text) => `<h2 id="${text.toLowerCase().replace(/[^a-z0-9]+/g, '-')}">${text}</h2>`)
+    .replace(/^# (.+)$/gm, (_, text) => `<h1 id="${text.toLowerCase().replace(/[^a-z0-9]+/g, '-')}">${text}</h1>`)
     // Bold
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     // Italic
     .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    // Lists
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    // Blockquotes
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    // Horizontal rules
+    .replace(/^---$/gm, '<hr class="section-divider" />')
+    // Unordered lists
     .replace(/^- (.+)$/gm, "<li>$1</li>")
-    .replace(/^(\d+)\. (.+)$/gm, "<li>$2</li>")
-    // Paragraphs
-    .split("\n\n")
-    .map((paragraph) => {
-      if (
-        paragraph.startsWith("<h") ||
-        paragraph.startsWith("<li") ||
-        paragraph.startsWith("<ul") ||
-        paragraph.startsWith("<ol")
-      ) {
-        return paragraph;
-      }
-      return `<p>${paragraph}</p>`;
-    })
-    .join("\n");
+    // Ordered lists
+    .replace(/^(\d+)\. (.+)$/gm, "<li>$2</li>");
 
-  // Wrap consecutive list items in ul
-  html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`);
+  // Process paragraphs - split by double newlines
+  const blocks = html.split(/\n\n+/);
+  html = blocks.map((block) => {
+    const trimmed = block.trim();
+    if (!trimmed) return '';
+    
+    // Skip if already wrapped in HTML tags
+    if (
+      trimmed.startsWith("<h") ||
+      trimmed.startsWith("<li") ||
+      trimmed.startsWith("<ul") ||
+      trimmed.startsWith("<ol") ||
+      trimmed.startsWith("<blockquote") ||
+      trimmed.startsWith("<pre") ||
+      trimmed.startsWith("<hr")
+    ) {
+      return trimmed;
+    }
+    
+    // Handle single line breaks within paragraphs
+    const withBreaks = trimmed.replace(/\n/g, '<br />');
+    return `<p>${withBreaks}</p>`;
+  }).filter(Boolean).join("\n\n");
+
+  // Wrap consecutive list items in ul/ol
+  html = html.replace(/(<li>.*?<\/li>\s*)+/gs, (match) => {
+    return `<ul class="content-list">${match}</ul>`;
+  });
+
+  // Wrap consecutive blockquotes
+  html = html.replace(/(<blockquote>.*?<\/blockquote>\s*)+/gs, (match) => {
+    return `<div class="quote-block">${match}</div>`;
+  });
 
   return html;
 };

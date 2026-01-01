@@ -138,6 +138,102 @@
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  /* Blog Article Rich Text Styling */
+  .blog-article {
+    @apply text-foreground;
+  }
+
+  .blog-content h1 {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 mt-12 first:mt-0 leading-tight;
+  }
+
+  .blog-content h2 {
+    @apply font-display text-2xl md:text-3xl font-bold text-foreground mb-5 mt-10 pt-6 border-t border-border/50 first:border-t-0 first:pt-0 leading-snug;
+  }
+
+  .blog-content h3 {
+    @apply font-display text-xl md:text-2xl font-semibold text-foreground mb-4 mt-8 leading-snug;
+  }
+
+  .blog-content p {
+    @apply text-lg leading-relaxed text-muted-foreground mb-6;
+  }
+
+  .blog-content a {
+    @apply text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors;
+  }
+
+  .blog-content strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .blog-content em {
+    @apply italic text-foreground/90;
+  }
+
+  .blog-content .content-list {
+    @apply my-6 pl-0 space-y-3;
+  }
+
+  .blog-content .content-list li {
+    @apply flex items-start gap-3 text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .blog-content .content-list li::before {
+    content: "";
+    @apply w-2 h-2 rounded-full bg-primary mt-3 flex-shrink-0;
+  }
+
+  .blog-content blockquote {
+    @apply text-lg italic text-foreground/80 border-l-4 border-primary pl-6 py-1 my-6;
+  }
+
+  .blog-content .quote-block {
+    @apply bg-muted/30 rounded-xl p-6 my-8;
+  }
+
+  .blog-content .quote-block blockquote {
+    @apply border-0 p-0 m-0;
+  }
+
+  .blog-content .inline-code {
+    @apply bg-muted px-2 py-1 rounded text-sm font-mono text-primary;
+  }
+
+  .blog-content .code-block {
+    @apply bg-secondary text-secondary-foreground rounded-xl p-6 my-8 overflow-x-auto;
+  }
+
+  .blog-content .code-block code {
+    @apply font-mono text-sm;
+  }
+
+  .blog-content hr,
+  .blog-content .section-divider {
+    @apply my-12 border-0 h-px bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  .blog-content img {
+    @apply rounded-xl shadow-lg my-8 w-full;
+  }
+
+  /* Table of Contents Styling */
+  .blog-content ul:has(a[href^="#"]) {
+    @apply bg-muted/30 rounded-xl p-6 my-8 border border-border/50;
+  }
+
+  .blog-content ul:has(a[href^="#"]) li {
+    @apply py-2;
+  }
+
+  .blog-content ul:has(a[href^="#"]) li::before {
+    @apply hidden;
+  }
+
+  .blog-content ul:has(a[href^="#"]) a {
+    @apply text-foreground no-underline hover:text-primary transition-colors;
+  }
 }
 
 @layer utilities {
