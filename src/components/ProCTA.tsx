@@ -1,7 +1,44 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Crown, Zap } from "lucide-react";
+import { Sparkles, Crown, Zap, Clock } from "lucide-react";
 
 const ProCTA = () => {
+  // Countdown to end of current month
+  const getTimeRemaining = () => {
+    const now = new Date();
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+    const total = endOfMonth.getTime() - now.getTime();
+    
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((total % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((total % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((total % (1000 * 60)) / 1000);
+    
+    return { days, hours, minutes, seconds, total };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(getTimeRemaining());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeRemaining());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const CountdownBox = ({ value, label }: { value: number; label: string }) => (
+    <div className="flex flex-col items-center">
+      <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 md:px-4 md:py-3 min-w-[60px] md:min-w-[80px]">
+        <span className="text-2xl md:text-4xl font-display font-bold text-white tabular-nums">
+          {value.toString().padStart(2, '0')}
+        </span>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-lg pointer-events-none" />
+      </div>
+      <span className="text-white/60 text-xs md:text-sm mt-2 uppercase tracking-wider">{label}</span>
+    </div>
+  );
+
   return (
     <section className="relative py-16 md:py-20 overflow-hidden">
       {/* Animated background */}
@@ -52,6 +89,23 @@ const ProCTA = () => {
           <p className="text-white/80 text-lg md:text-xl mb-8 max-w-xl mx-auto animate-fade-up" style={{ animationDelay: '300ms' }}>
             Get unlimited quotations, advanced invoicing, team collaboration & priority support
           </p>
+
+          {/* Countdown Timer */}
+          <div className="mb-8 animate-fade-up" style={{ animationDelay: '350ms' }}>
+            <div className="inline-flex items-center gap-2 text-white/80 text-sm mb-4">
+              <Clock className="w-4 h-4 text-intorza-amber" />
+              <span>Offer ends in:</span>
+            </div>
+            <div className="flex justify-center gap-3 md:gap-4">
+              <CountdownBox value={timeLeft.days} label="Days" />
+              <div className="flex items-center text-2xl md:text-4xl text-white/40 font-bold pt-0 md:pt-1">:</div>
+              <CountdownBox value={timeLeft.hours} label="Hours" />
+              <div className="flex items-center text-2xl md:text-4xl text-white/40 font-bold pt-0 md:pt-1">:</div>
+              <CountdownBox value={timeLeft.minutes} label="Mins" />
+              <div className="flex items-center text-2xl md:text-4xl text-white/40 font-bold pt-0 md:pt-1">:</div>
+              <CountdownBox value={timeLeft.seconds} label="Secs" />
+            </div>
+          </div>
 
           {/* CTA Button */}
           <div className="animate-fade-up" style={{ animationDelay: '400ms' }}>
