@@ -21,44 +21,89 @@ serve(async (req) => {
     console.log("Generating blog for topic:", topic);
 
     const systemPrompt = `You are an expert SEO content writer who creates human-like, engaging blog articles. Your writing style is:
-- Simple and easy to understand (a 12-year-old should be able to read it)
-- Natural and conversational, like talking to a friend
+- Extremely simple and easy to understand (an 8-year-old child should be able to read and enjoy it)
+- Use short sentences and simple words
+- Natural and conversational, like explaining something to a curious child
 - Free from AI-detectable patterns (avoid repetitive structures, robotic phrasing)
-- Engaging with real-world examples and relatable stories
+- Engaging with fun real-world examples and relatable stories
+- Uses analogies and comparisons to everyday things kids understand
 
-IMPORTANT: Write content that feels genuinely human-written. Avoid:
+IMPORTANT: Write content that feels genuinely human-written and super easy to read. Avoid:
 - Starting every paragraph the same way
-- Using overly formal or corporate language
+- Using complex or technical jargon without explaining it simply
+- Long, complicated sentences
 - Generic filler content
-- Repetitive sentence structures`;
+- Repetitive sentence structures
+- Passive voice (use active voice instead)`;
+
 
     const userPrompt = `Write a comprehensive, SEO-optimized blog article about: "${topic}"
 
 Target Keywords: ${keywords || 'not specified'}
 Target Audience: ${targetAudience || 'general readers'}
 
-Requirements:
-1. LENGTH: 2500-3500 words of high-quality content
-2. E-E-A-T STRUCTURE: Show Experience, Expertise, Authoritativeness, and Trustworthiness
-3. HEADING HIERARCHY: Use proper H1, H2, H3 structure (format as # for H1, ## for H2, ### for H3)
-4. TABLE OF CONTENTS: Include at the beginning after a brief intro
-5. CASE STUDIES: Include 2-3 real examples or case studies
-6. STATISTICS: Include relevant statistics with attribution
-7. INTERNAL STRUCTURE:
-   - Hook opening that grabs attention
-   - Clear introduction explaining what readers will learn
-   - Well-organized body with subheadings
-   - Actionable tips and takeaways
-   - Strong conclusion with CTA
+CRITICAL REQUIREMENTS:
 
-8. SEO ELEMENTS at the end in this exact format:
+1. READABILITY: Write so an 8-year-old child can understand. Use:
+   - Short sentences (under 15 words when possible)
+   - Simple, everyday words
+   - Fun comparisons ("It's like when you...")
+   - Questions that make readers think
+
+2. LENGTH: 2500-3500 words of high-quality, easy-to-read content
+
+3. E-E-A-T STRUCTURE: Show Experience, Expertise, Authoritativeness, and Trustworthiness through:
+   - Personal stories and real examples
+   - Expert quotes and citations
+   - Data and statistics from trusted sources
+
+4. HEADING HIERARCHY: Use proper structure:
+   # Main Title (H1) - only one
+   ## Section Headings (H2) - main sections
+   ### Subsection Headings (H3) - details within sections
+
+5. TABLE OF CONTENTS: After a 2-3 sentence intro hook, include:
+   ## What You'll Learn
+   - [Section 1 name](#section-link)
+   - [Section 2 name](#section-link)
+   (etc.)
+
+6. CASE STUDIES: Include 2-3 real examples with:
+   - Specific names/companies when possible
+   - Numbers and results
+   - What they did and what happened
+
+7. REFERENCE LINKS: Include 3-5 links to authoritative sources like:
+   - Government websites (.gov)
+   - Educational institutions (.edu)
+   - Major industry publications
+   Format: [Source Name](URL)
+
+8. EMOTIONAL ELEMENTS:
+   - Start with a hook that creates curiosity or addresses a pain point
+   - Use stories that readers can relate to
+   - Include "imagine if..." scenarios
+
+9. STRUCTURE EACH SECTION WITH:
+   - A clear subheading
+   - 2-3 short paragraphs
+   - Bullet points or numbered lists where helpful
+   - A key takeaway or tip
+
+10. CALL TO ACTION: End with:
+    - Summary of key points
+    - One clear next step for the reader
+    - Encouraging, motivating tone
+
+11. SEO ELEMENTS at the very end in this exact format:
 ---
 META_TITLE: [60 characters max, include main keyword]
 META_DESCRIPTION: [160 characters max, compelling with keyword]
 EXCERPT: [2-3 sentence summary for blog cards]
 ---
 
-Write in a friendly, conversational tone. Use "you" and "your" to connect with readers. Include questions to engage readers. Make it feel like advice from a knowledgeable friend, not a textbook.`;
+Remember: Write like you're explaining to a smart 8-year-old. If a concept is complex, break it down with a simple analogy. Make it fun to read!`;
+
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
