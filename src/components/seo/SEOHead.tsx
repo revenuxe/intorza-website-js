@@ -1,4 +1,10 @@
 import { Helmet } from "react-helmet-async";
+import { countries } from "@/data/countries";
+
+interface HreflangLink {
+  locale: string;
+  url: string;
+}
 
 interface SEOHeadProps {
   title: string;
@@ -11,6 +17,8 @@ interface SEOHeadProps {
   modifiedTime?: string;
   author?: string;
   noindex?: boolean;
+  locale?: string;
+  includeHreflang?: boolean;
 }
 
 const SEOHead = ({
@@ -24,8 +32,22 @@ const SEOHead = ({
   modifiedTime,
   author = "Intorza",
   noindex = false,
+  locale = "en_IN",
+  includeHreflang = false,
 }: SEOHeadProps) => {
   const fullTitle = title.includes("Intorza") ? title : `${title} | Intorza`;
+
+  // Generate hreflang links for all country pages
+  const hreflangLinks: HreflangLink[] = includeHreflang
+    ? [
+        { locale: "x-default", url: "https://intorza.com" },
+        { locale: "en-IN", url: "https://intorza.com" },
+        ...countries.map((country) => ({
+          locale: country.locale,
+          url: `https://intorza.com/${country.code}`,
+        })),
+      ]
+    : [];
 
   return (
     <Helmet>
@@ -38,6 +60,16 @@ const SEOHead = ({
       <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <link rel="canonical" href={canonicalUrl} />
 
+      {/* Hreflang Tags for International SEO */}
+      {hreflangLinks.map((link) => (
+        <link
+          key={link.locale}
+          rel="alternate"
+          hrefLang={link.locale}
+          href={link.url}
+        />
+      ))}
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonicalUrl} />
@@ -47,7 +79,7 @@ const SEOHead = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="Intorza" />
-      <meta property="og:locale" content="en_IN" />
+      <meta property="og:locale" content={locale} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
