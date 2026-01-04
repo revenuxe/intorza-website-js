@@ -31,7 +31,7 @@ const CountryHeroSection = ({ country }: CountryHeroSectionProps) => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-up">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6 animate-fade-up">
               Best{" "}
               <span className="text-gradient">Interior Design Software</span>{" "}
               in {country.name}
