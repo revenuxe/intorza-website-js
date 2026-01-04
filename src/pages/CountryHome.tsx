@@ -28,6 +28,8 @@ const CountryHome = () => {
         keywords={country.seoKeywords}
         canonicalUrl={`https://intorza.com/${country.code}`}
         ogImage="https://intorza.com/og-image.png"
+        locale={country.locale}
+        includeHreflang={true}
       />
       <Header />
       <main>
