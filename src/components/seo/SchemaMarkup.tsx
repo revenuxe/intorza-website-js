@@ -435,3 +435,277 @@ export const LocalBusinessSchema = () => {
     </Helmet>
   );
 };
+
+// Speakable Schema for AEO (Answer Engine Optimization)
+export const SpeakableSchema = ({
+  name,
+  url,
+  cssSelectors = ["h1", ".hero-description", ".faq-answer"],
+}: {
+  name: string;
+  url: string;
+  cssSelectors?: string[];
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: name,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: cssSelectors,
+    },
+    url: url,
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
+
+// ItemList Schema for featured snippets
+export const ItemListSchema = ({
+  name,
+  description,
+  items,
+}: {
+  name: string;
+  description: string;
+  items: { name: string; url: string; description?: string; image?: string }[];
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: name,
+    description: description,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+      description: item.description,
+      image: item.image,
+    })),
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
+
+// Service Schema for service pages
+export const ServiceSchema = ({
+  name,
+  description,
+  provider = "Intorza",
+  areaServed = "Worldwide",
+  serviceType,
+  url,
+}: {
+  name: string;
+  description: string;
+  provider?: string;
+  areaServed?: string;
+  serviceType: string;
+  url: string;
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: name,
+    description: description,
+    provider: {
+      "@type": "Organization",
+      name: provider,
+      url: "https://intorza.com",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: areaServed,
+    },
+    serviceType: serviceType,
+    url: url,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+    },
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
+
+// DefinedTermSet Schema for glossary/terminology (AEO)
+export const DefinedTermSchema = ({
+  terms,
+}: {
+  terms: { term: string; definition: string }[];
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name: "Interior Design & Project Management Glossary",
+    hasDefinedTerm: terms.map((t) => ({
+      "@type": "DefinedTerm",
+      name: t.term,
+      description: t.definition,
+    })),
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
+
+// QAPage Schema for Q&A content (AEO for voice search)
+export const QAPageSchema = ({
+  question,
+  answer,
+  upvoteCount = 100,
+  dateCreated,
+}: {
+  question: string;
+  answer: string;
+  upvoteCount?: number;
+  dateCreated?: string;
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    mainEntity: {
+      "@type": "Question",
+      name: question,
+      text: question,
+      answerCount: 1,
+      upvoteCount: upvoteCount,
+      dateCreated: dateCreated || new Date().toISOString(),
+      author: {
+        "@type": "Organization",
+        name: "Intorza",
+      },
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer,
+        upvoteCount: upvoteCount,
+        url: "https://intorza.com",
+        author: {
+          "@type": "Organization",
+          name: "Intorza",
+        },
+      },
+    },
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
+
+// CollectionPage Schema for category/listing pages
+export const CollectionPageSchema = ({
+  name,
+  description,
+  url,
+  items,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  items: { name: string; url: string }[];
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: name,
+    description: description,
+    url: url,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: item.url,
+      })),
+    },
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
+
+// ProfessionalService Schema for B2B targeting
+export const ProfessionalServiceSchema = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://intorza.com/#professionalservice",
+    name: "Intorza - Interior Design Software Solutions",
+    description: "Professional interior design project management software for designers, architects, and contractors",
+    url: "https://intorza.com",
+    image: "https://intorza.com/og-image.png",
+    logo: "https://intorza.com/intorza-logo.webp",
+    email: "intorza.com@gmail.com",
+    priceRange: "Free - ₹999/month",
+    paymentAccepted: "Credit Card, Debit Card, UPI, Net Banking",
+    currenciesAccepted: "INR, USD",
+    areaServed: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: "20.5937",
+        longitude: "78.9629",
+      },
+      geoRadius: "10000",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Intorza Software Plans",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Intorza Free Plan",
+            description: "Basic features for solo interior designers",
+          },
+          price: "0",
+          priceCurrency: "INR",
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Intorza Pro Plan",
+            description: "Advanced features for growing businesses",
+          },
+          price: "499",
+          priceCurrency: "INR",
+        },
+      ],
+    },
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+};
