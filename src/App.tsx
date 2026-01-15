@@ -8,6 +8,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import CountryHome from "./pages/CountryHome";
+import CityHome from "./pages/CityHome";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import About from "./pages/About";
@@ -42,6 +43,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/:countryCode" element={<CountryHome />} />
+              <Route path="/:countryCode/:citySlug" element={<CityHome />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/about" element={<About />} />
