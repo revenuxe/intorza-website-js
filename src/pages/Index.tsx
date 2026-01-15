@@ -9,8 +9,12 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/seo/SEOHead";
 import { SpeakableSchema, ItemListSchema, ProfessionalServiceSchema } from "@/components/seo/SchemaMarkup";
+import useGeoRedirect from "@/hooks/useGeoRedirect";
+import GeoRedirectBanner from "@/components/GeoRedirectBanner";
 
 const Index = () => {
+  const { geoData, showRedirectBanner, redirectToLocalPage, dismissBanner } = useGeoRedirect();
+
   // Feature list for ItemList schema (helps with featured snippets)
   const featureItems = [
     { name: "Quotation Builder", url: "https://intorza.com/#features", description: "Create professional interior design quotations with auto-calculations" },
@@ -64,6 +68,16 @@ const Index = () => {
         <CTASection />
       </main>
       <Footer />
+
+      {/* Geo-redirect banner for international users */}
+      {showRedirectBanner && geoData && (
+        <GeoRedirectBanner
+          countryCode={geoData.countryCode}
+          countryName={geoData.countryName}
+          onRedirect={redirectToLocalPage}
+          onDismiss={dismissBanner}
+        />
+      )}
     </div>
   );
 };
