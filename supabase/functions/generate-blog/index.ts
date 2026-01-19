@@ -11,14 +11,14 @@ serve(async (req) => {
   }
 
   try {
-    const { topic, keywords, targetAudience } = await req.json();
+    const { topic, keywords, targetAudience, targetCity, targetCountry, localTerms, internalLinks } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
-    console.log("Generating blog for topic:", topic);
+    console.log("Generating blog for topic:", topic, "City:", targetCity || "none");
 
     const systemPrompt = `You are an expert SEO content writer who creates human-like, engaging blog articles. Your writing style is:
 - Extremely simple and easy to understand (an 8-year-old child should be able to read and enjoy it)
@@ -37,10 +37,27 @@ IMPORTANT: Write content that feels genuinely human-written and super easy to re
 - Passive voice (use active voice instead)`;
 
 
+    // Build city-specific context if targeting a city
+    const cityContext = targetCity ? `
+CITY-SPECIFIC TARGETING:
+- Target City: ${targetCity}
+- Target Country: ${targetCountry || 'not specified'}
+- Local Terms to naturally include: ${localTerms || 'none specified'}
+- IMPORTANT: Mention ${targetCity} and local areas naturally throughout the article (aim for 8-12 mentions)
+- Reference local design trends, challenges, and opportunities specific to ${targetCity}
+- Include local market insights and statistics when possible
+
+INTERNAL LINKING (CRITICAL FOR SEO):
+Include these internal links naturally in the content:
+${internalLinks || `- [interior design software in ${targetCity}](/${targetCountry?.toLowerCase() || 'us'}/${targetCity.toLowerCase().replace(/\s+/g, '-')})
+- [Intorza for ${targetCity} designers](/${targetCountry?.toLowerCase() || 'us'}/${targetCity.toLowerCase().replace(/\s+/g, '-')})`}
+` : '';
+
     const userPrompt = `Write a comprehensive, SEO-optimized blog article about: "${topic}"
 
 Target Keywords: ${keywords || 'not specified'}
 Target Audience: ${targetAudience || 'general readers'}
+${cityContext}
 
 CRITICAL REQUIREMENTS:
 
@@ -53,12 +70,12 @@ CRITICAL REQUIREMENTS:
 2. LENGTH: 2500-3500 words of high-quality, easy-to-read content
 
 3. E-E-A-T STRUCTURE: Show Experience, Expertise, Authoritativeness, and Trustworthiness through:
-   - Personal stories and real examples
+   - Personal stories and real examples from ${targetCity || 'the industry'}
    - Expert quotes and citations
    - Data and statistics from trusted sources
 
 4. HEADING HIERARCHY: Use proper structure:
-   # Main Title (H1) - only one
+   # Main Title (H1) - only one, include ${targetCity || 'main keyword'} naturally
    ## Section Headings (H2) - main sections
    ### Subsection Headings (H3) - details within sections
 
@@ -69,7 +86,7 @@ CRITICAL REQUIREMENTS:
    (etc.)
 
 6. CASE STUDIES: Include 2-3 real examples with:
-   - Specific names/companies when possible
+   - Specific names/companies ${targetCity ? `from ${targetCity} or ${targetCountry}` : ''} when possible
    - Numbers and results
    - What they did and what happened
 
@@ -79,26 +96,33 @@ CRITICAL REQUIREMENTS:
    - Major industry publications
    Format: [Source Name](URL)
 
-8. EMOTIONAL ELEMENTS:
-   - Start with a hook that creates curiosity or addresses a pain point
+8. INTERNAL LINKS (CRITICAL):
+   - Include 3-5 internal links to relevant pages on intorza.com
+   - Link to the city page: /${targetCountry?.toLowerCase() || 'us'}/${targetCity?.toLowerCase().replace(/\s+/g, '-') || ''}
+   - Link to the country page: /${targetCountry?.toLowerCase() || 'us'}
+   - Use natural anchor text like "interior design software for ${targetCity} professionals"
+
+9. EMOTIONAL ELEMENTS:
+   - Start with a hook that creates curiosity or addresses a pain point${targetCity ? ` specific to ${targetCity}` : ''}
    - Use stories that readers can relate to
    - Include "imagine if..." scenarios
 
-9. STRUCTURE EACH SECTION WITH:
-   - A clear subheading
-   - 2-3 short paragraphs
-   - Bullet points or numbered lists where helpful
-   - A key takeaway or tip
+10. STRUCTURE EACH SECTION WITH:
+    - A clear subheading
+    - 2-3 short paragraphs
+    - Bullet points or numbered lists where helpful
+    - A key takeaway or tip
 
-10. CALL TO ACTION: End with:
+11. CALL TO ACTION: End with:
     - Summary of key points
-    - One clear next step for the reader
+    - One clear next step for the reader${targetCity ? ` in ${targetCity}` : ''}
     - Encouraging, motivating tone
+    - Link to try Intorza: [Start your free trial](https://app.intorza.com)
 
-11. SEO ELEMENTS at the very end in this exact format:
+12. SEO ELEMENTS at the very end in this exact format:
 ---
-META_TITLE: [60 characters max, include main keyword]
-META_DESCRIPTION: [160 characters max, compelling with keyword]
+META_TITLE: [60 characters max, include ${targetCity || 'main keyword'}]
+META_DESCRIPTION: [160 characters max, compelling with ${targetCity || 'keyword'}]
 EXCERPT: [2-3 sentence summary for blog cards]
 ---
 
