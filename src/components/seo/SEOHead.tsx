@@ -62,12 +62,17 @@ const SEOHead = ({
 }: SEOHeadProps) => {
   const fullTitle = title.includes("Intorza") ? title : `${title} | Intorza`;
   const currentDate = new Date().toISOString();
+  
+  // Normalize canonical URL (remove trailing slash except for root)
+  const normalizedCanonical = canonicalUrl.endsWith('/') && canonicalUrl !== 'https://intorza.com/' 
+    ? canonicalUrl.slice(0, -1) 
+    : canonicalUrl;
 
-  // Generate hreflang links for all country pages
+  // Generate hreflang links for all country pages - with x-default pointing to root
   const hreflangLinks: HreflangLink[] = includeHreflang
     ? [
-        { locale: "x-default", url: "https://intorza.com" },
-        { locale: "en-IN", url: "https://intorza.com" },
+        { locale: "x-default", url: "https://intorza.com/" },
+        { locale: "en-IN", url: "https://intorza.com/" },
         ...countries.map((country) => ({
           locale: country.locale,
           url: `https://intorza.com/${country.code}`,
@@ -117,7 +122,10 @@ const SEOHead = ({
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="author" content={author} />
       <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
-      <link rel="canonical" href={canonicalUrl} />
+      <link rel="canonical" href={normalizedCanonical} />
+      
+      {/* Cache Control for SEO */}
+      <meta httpEquiv="Cache-Control" content="public, max-age=86400" />
 
       {/* Advanced SEO Meta Tags */}
       <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
