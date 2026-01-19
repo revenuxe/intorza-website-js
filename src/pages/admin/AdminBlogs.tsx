@@ -22,10 +22,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, Pencil, Trash2, Loader2, Eye, EyeOff, Sparkles, FileText, Check } from 'lucide-react';
+import { Plus, Pencil, Trash2, Loader2, Eye, EyeOff, Sparkles, FileText, Check, MapPin, Lightbulb } from 'lucide-react';
 import { format } from 'date-fns';
+import { cityBlogStrategies, getCityBlogStrategy, type CityBlogTopic } from '@/data/cityBlogStrategy';
 
 interface BlogPost {
   id: string;
@@ -53,7 +61,10 @@ const AdminBlogs = () => {
     topic: '',
     keywords: '',
     targetAudience: '',
+    targetCity: '',
   });
+  
+  const [suggestedTopics, setSuggestedTopics] = useState<CityBlogTopic[]>([]);
 
   // Manual form
   const [formData, setFormData] = useState({
@@ -106,9 +117,33 @@ const AdminBlogs = () => {
       topic: '',
       keywords: '',
       targetAudience: '',
+      targetCity: '',
     });
+    setSuggestedTopics([]);
     setEditingPost(null);
     setActiveTab('ai');
+  };
+  
+  // Update suggested topics when city changes
+  const handleCityChange = (citySlug: string) => {
+    setAiForm({ ...aiForm, targetCity: citySlug });
+    if (citySlug) {
+      const strategy = getCityBlogStrategy(citySlug);
+      if (strategy) {
+        setSuggestedTopics(strategy.blogTopics);
+      }
+    } else {
+      setSuggestedTopics([]);
+    }
+  };
+  
+  // Use suggested topic
+  const useSuggestedTopic = (topic: CityBlogTopic) => {
+    setAiForm({
+      ...aiForm,
+      topic: topic.title,
+      keywords: topic.keywords.join(', '),
+    });
   };
 
   const openEditDialog = (post: BlogPost) => {
@@ -133,11 +168,20 @@ const AdminBlogs = () => {
 
     setGenerating(true);
     try {
+      // Get city strategy for additional context
+      const cityStrategy = aiForm.targetCity ? getCityBlogStrategy(aiForm.targetCity) : null;
+      
       const { data, error } = await supabase.functions.invoke('generate-blog', {
         body: {
           topic: aiForm.topic,
           keywords: aiForm.keywords,
           targetAudience: aiForm.targetAudience,
+          targetCity: cityStrategy?.cityName || '',
+          targetCountry: cityStrategy?.countryCode || '',
+          localTerms: cityStrategy?.localTerms?.join(', ') || '',
+          internalLinks: cityStrategy ? cityStrategy.blogTopics.map(t => 
+            `- [${t.title.split(':')[0]}](${t.targetUrl})`
+          ).join('\n') : '',
         },
       });
 
@@ -243,6 +287,8 @@ const AdminBlogs = () => {
     'Reference links to authoritative sources',
     'SEO-optimized meta tags',
     'Emotional hook and CTA',
+    'City-specific keywords & local terms',
+    'Internal links to boost city pages',
   ];
 
   return (
@@ -287,6 +333,51 @@ const AdminBlogs = () => {
                   </div>
 
                   <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="ai-city" className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-intorza-orange" />
+                        Target City (for local SEO)
+                      </Label>
+                      <Select value={aiForm.targetCity} onValueChange={handleCityChange}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a city for geo-targeted content" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="">No specific city</SelectItem>
+                          {cityBlogStrategies.map((city) => (
+                            <SelectItem key={city.citySlug} value={city.citySlug}>
+                              {city.cityName}, {city.countryName}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <p className="text-sm text-muted-foreground">Select a city to generate content with local keywords and internal links</p>
+                    </div>
+                    
+                    {suggestedTopics.length > 0 && (
+                      <div className="bg-intorza-orange/5 border border-intorza-orange/20 rounded-lg p-4 space-y-3">
+                        <div className="flex items-center gap-2 text-sm font-medium text-intorza-orange">
+                          <Lightbulb className="w-4 h-4" />
+                          Suggested Topics for {getCityBlogStrategy(aiForm.targetCity)?.cityName}
+                        </div>
+                        <div className="space-y-2">
+                          {suggestedTopics.slice(0, 3).map((topic, index) => (
+                            <button
+                              key={index}
+                              type="button"
+                              onClick={() => useSuggestedTopic(topic)}
+                              className="w-full text-left p-2 rounded-md hover:bg-intorza-orange/10 transition-colors text-sm"
+                            >
+                              <div className="font-medium text-foreground">{topic.title}</div>
+                              <div className="text-xs text-muted-foreground mt-1">
+                                Keywords: {topic.keywords.slice(0, 3).join(', ')}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="space-y-2">
                       <Label htmlFor="ai-topic">Topic / Title *</Label>
                       <Input
