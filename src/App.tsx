@@ -28,6 +28,7 @@ import AdminBlogs from "./pages/admin/AdminBlogs";
 import AdminCareers from "./pages/admin/AdminCareers";
 import AdminInquiries from "./pages/admin/AdminInquiries";
 import AdminFeedback from "./pages/admin/AdminFeedback";
+import AdminScheduler from "./pages/admin/AdminScheduler";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="/admin" element={<AdminLayout />}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="blogs" element={<AdminBlogs />} />
+                <Route path="scheduler" element={<AdminScheduler />} />
                 <Route path="careers" element={<AdminCareers />} />
                 <Route path="inquiries" element={<AdminInquiries />} />
                 <Route path="feedback" element={<AdminFeedback />} />

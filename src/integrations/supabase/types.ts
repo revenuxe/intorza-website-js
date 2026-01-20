@@ -149,6 +149,62 @@ export type Database = {
         }
         Relationships: []
       }
+      scheduled_blog_posts: {
+        Row: {
+          blog_post_id: string | null
+          created_at: string
+          created_by: string | null
+          error_message: string | null
+          id: string
+          keywords: string | null
+          scheduled_date: string
+          status: string
+          target_audience: string | null
+          target_city: string | null
+          target_country: string | null
+          topic: string
+          updated_at: string
+        }
+        Insert: {
+          blog_post_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          keywords?: string | null
+          scheduled_date: string
+          status?: string
+          target_audience?: string | null
+          target_city?: string | null
+          target_country?: string | null
+          topic: string
+          updated_at?: string
+        }
+        Update: {
+          blog_post_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          keywords?: string | null
+          scheduled_date?: string
+          status?: string
+          target_audience?: string | null
+          target_city?: string | null
+          target_country?: string | null
+          topic?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scheduled_blog_posts_blog_post_id_fkey"
+            columns: ["blog_post_id"]
+            isOneToOne: false
+            referencedRelation: "blog_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
