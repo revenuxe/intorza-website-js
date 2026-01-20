@@ -22,7 +22,8 @@ import {
   MessageSquare, 
   LogOut,
   Loader2,
-  Star
+  Star,
+  CalendarClock
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import intorzaLogo from '@/assets/intorza-logo.webp';
@@ -30,6 +31,7 @@ import intorzaLogo from '@/assets/intorza-logo.webp';
 const menuItems = [
   { title: 'Dashboard', url: '/admin', icon: LayoutDashboard },
   { title: 'Blog Posts', url: '/admin/blogs', icon: FileText },
+  { title: 'Blog Scheduler', url: '/admin/scheduler', icon: CalendarClock },
   { title: 'Job Listings', url: '/admin/careers', icon: Briefcase },
   { title: 'Inquiries', url: '/admin/inquiries', icon: MessageSquare },
   { title: 'Feedback', url: '/admin/feedback', icon: Star },
