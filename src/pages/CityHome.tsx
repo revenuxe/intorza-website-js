@@ -2,7 +2,6 @@ import { useParams, Navigate } from "react-router-dom";
 import { getCityBySlug } from "@/data/cities";
 import { countries } from "@/data/countries";
 import SEOHead from "@/components/seo/SEOHead";
-import CitySEOSchema from "@/components/seo/CitySEOSchema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -12,6 +11,7 @@ import CountryProCTA from "@/components/country/CountryProCTA";
 import CountryCTASection from "@/components/country/CountryCTASection";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import FeedbackCTA from "@/components/FeedbackCTA";
+import { Helmet } from "react-helmet-async";
 
 const CityHome = () => {
   const { countryCode, citySlug } = useParams<{ countryCode: string; citySlug: string }>();
@@ -35,6 +35,31 @@ const CityHome = () => {
     { name: city.name, url: cityUrl },
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
+      { "@type": "ListItem", "position": 2, "name": country.name, "item": `${baseUrl}/${country.code}` },
+      { "@type": "ListItem", "position": 3, "name": city.name, "item": cityUrl }
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `Intorza - Interior Design Software ${city.name}`,
+    "applicationCategory": "BusinessApplication",
+    "url": cityUrl,
+    "offers": {
+      "@type": "Offer",
+      "price": country.priceValue.toString(),
+      "priceCurrency": country.currency,
+      "availability": "https://schema.org/InStock"
+    },
+    "author": { "@id": "https://intorza.com/#organization" }
+  };
+
   return (
     <>
       <SEOHead
@@ -43,26 +68,19 @@ const CityHome = () => {
         keywords={city.seoKeywords}
         canonicalUrl={cityUrl}
         locale={country.locale}
-        ogType="website"
-        ogImage={`${baseUrl}/og-image.png`}
-        includeHreflang={false}
-        category="Interior Design Software"
-        tags={[city.name, city.countryName, "Interior Design", "Quotation Software", "Invoice Software", ...city.landmarks]}
-        priceRange="$"
-        applicationName="Intorza"
-        speakableSelectors={[".hero-title", ".hero-subtitle", ".city-description"]}
       />
-      <CitySEOSchema city={city} />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+      </Helmet>
       
       <Header />
       
       <main className="min-h-screen bg-background">
-        {/* Breadcrumbs */}
         <div className="container mx-auto px-4 pt-6">
           <Breadcrumbs items={breadcrumbItems} />
         </div>
 
-        {/* City-specific Hero */}
         <section className="py-12 lg:py-20 bg-gradient-to-br from-background via-primary/5 to-background">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-4xl mx-auto">
@@ -70,16 +88,15 @@ const CityHome = () => {
                 <span className="text-sm font-medium text-primary">{city.trustedByText}</span>
               </div>
               
-              <h1 className="hero-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                 Interior Design Software for{" "}
                 <span className="text-primary">{city.name}</span>
               </h1>
               
-              <p className="hero-subtitle city-description text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 {city.heroSubtitle}
               </p>
 
-              {/* City landmarks */}
               <div className="flex flex-wrap justify-center gap-2 mb-8">
                 {city.landmarks.map((landmark, index) => (
                   <span

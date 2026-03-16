@@ -9,8 +9,8 @@ import CountryTestimonialsSection from "@/components/country/CountryTestimonials
 import CountryCTASection from "@/components/country/CountryCTASection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/seo/SEOHead";
-import CountrySEOSchema from "@/components/seo/CountrySEOSchema";
 import { getCountryByCode } from "@/data/countries";
+import { Helmet } from "react-helmet-async";
 
 const CountryHome = () => {
   const { countryCode } = useParams<{ countryCode: string }>();
@@ -21,15 +21,37 @@ const CountryHome = () => {
     return <Navigate to="/" replace />;
   }
 
-  // Country-specific tags for enhanced AEO
-  const countryTags = [
-    `interior design ${country.name}`,
-    `quotation software ${country.name}`,
-    `invoice software ${country.name}`,
-    `project management ${country.name}`,
-    `interior designer tools ${country.name}`,
-    `contractor software ${country.name}`
-  ];
+  // Clean country-specific schema - one per type only
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `Intorza - Interior Design Software ${country.name}`,
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "url": `https://intorza.com/${country.code}`,
+    "offers": {
+      "@type": "Offer",
+      "price": country.priceValue.toString(),
+      "priceCurrency": country.currency,
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "547",
+      "bestRating": "5"
+    },
+    "author": { "@id": "https://intorza.com/#organization" }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://intorza.com" },
+      { "@type": "ListItem", "position": 2, "name": country.name, "item": `https://intorza.com/${country.code}` }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,16 +60,13 @@ const CountryHome = () => {
         description={country.seoDescription}
         keywords={country.seoKeywords}
         canonicalUrl={`https://intorza.com/${country.code}`}
-        ogImage="https://intorza.com/og-image.png"
         locale={country.locale}
         includeHreflang={true}
-        category={`Interior Design Software - ${country.region}`}
-        tags={countryTags}
-        priceRange={country.price}
-        applicationName={`Intorza ${country.name}`}
-        speakableSelectors={[".hero-title", ".hero-subtitle", ".feature-title"]}
       />
-      <CountrySEOSchema country={country} />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
       <Header />
       <main>
         <CountryHeroSection country={country} />
