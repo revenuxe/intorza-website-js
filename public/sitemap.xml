@@ -1,735 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Homepage (India - Default) -->
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
   <url>
-    <loc>https://intorza.com/</loc>
-    <lastmod>2026-01-19</lastmod>
+    <loc>https://intorza.com</loc>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://intorza.com/us"/>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://intorza.com/ca"/>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://intorza.com/uk"/>
-    <xhtml:link rel="alternate" hreflang="en-AU" href="https://intorza.com/au"/>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://intorza.com/de"/>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://intorza.com/fr"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://intorza.com/ae"/>
-    <xhtml:link rel="alternate" hreflang="en-SG" href="https://intorza.com/sg"/>
     <image:image>
       <image:loc>https://intorza.com/og-image.png</image:loc>
-      <image:title>Intorza - Interior Design Software</image:title>
+      <image:title>Intorza Interior Design Software</image:title>
     </image:image>
   </url>
-  
-  <!-- Country Pages - North America -->
-  <url>
-    <loc>https://intorza.com/us</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://intorza.com/us"/>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://intorza.com/ca"/>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://intorza.com/uk"/>
-    <xhtml:link rel="alternate" hreflang="en-AU" href="https://intorza.com/au"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ca</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://intorza.com/us"/>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://intorza.com/ca"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/mx</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://intorza.com/mx"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intorza.com/es"/>
-  </url>
-  
-  <!-- Country Pages - Europe -->
-  <url>
-    <loc>https://intorza.com/uk</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://intorza.com/uk"/>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://intorza.com/us"/>
-    <xhtml:link rel="alternate" hreflang="en-AU" href="https://intorza.com/au"/>
-    <xhtml:link rel="alternate" hreflang="en-IE" href="https://intorza.com/ie"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/de</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://intorza.com/de"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://intorza.com/at"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://intorza.com/ch"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/fr</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://intorza.com/fr"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/it</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="it-IT" href="https://intorza.com/it"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/es</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intorza.com/es"/>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://intorza.com/mx"/>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://intorza.com/ar"/>
-    <xhtml:link rel="alternate" hreflang="es-CL" href="https://intorza.com/cl"/>
-    <xhtml:link rel="alternate" hreflang="es-CO" href="https://intorza.com/co"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/nl</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://intorza.com/nl"/>
-    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://intorza.com/be"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/be</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://intorza.com/be"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://intorza.com/nl"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ch</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://intorza.com/ch"/>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://intorza.com/de"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/at</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://intorza.com/at"/>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://intorza.com/de"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/se</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://intorza.com/se"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/no</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="no-NO" href="https://intorza.com/no"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/dk</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="da-DK" href="https://intorza.com/dk"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/fi</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="fi-FI" href="https://intorza.com/fi"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ie</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-IE" href="https://intorza.com/ie"/>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="https://intorza.com/uk"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/pt</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://intorza.com/pt"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://intorza.com/br"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/pl</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="pl-PL" href="https://intorza.com/pl"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/gr</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="el-GR" href="https://intorza.com/gr"/>
-  </url>
-  
-  <!-- Country Pages - Middle East -->
-  <url>
-    <loc>https://intorza.com/ae</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://intorza.com/ae"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://intorza.com/sa"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/sa</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://intorza.com/sa"/>
-    <xhtml:link rel="alternate" hreflang="ar-AE" href="https://intorza.com/ae"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/qa</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-QA" href="https://intorza.com/qa"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/kw</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-KW" href="https://intorza.com/kw"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/bh</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-BH" href="https://intorza.com/bh"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/om</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-OM" href="https://intorza.com/om"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/il</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="he-IL" href="https://intorza.com/il"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/tr</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://intorza.com/tr"/>
-  </url>
-  
-  <!-- Country Pages - Asia Pacific -->
-  <url>
-    <loc>https://intorza.com/au</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-AU" href="https://intorza.com/au"/>
-    <xhtml:link rel="alternate" hreflang="en-NZ" href="https://intorza.com/nz"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/nz</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-NZ" href="https://intorza.com/nz"/>
-    <xhtml:link rel="alternate" hreflang="en-AU" href="https://intorza.com/au"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/sg</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-SG" href="https://intorza.com/sg"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/my</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://intorza.com/my"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/th</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="th-TH" href="https://intorza.com/th"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/id</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="id-ID" href="https://intorza.com/id"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ph</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-PH" href="https://intorza.com/ph"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/vn</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://intorza.com/vn"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/jp</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ja-JP" href="https://intorza.com/jp"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/kr</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ko-KR" href="https://intorza.com/kr"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/hk</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="zh-HK" href="https://intorza.com/hk"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://intorza.com/tw"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/tw</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://intorza.com/tw"/>
-    <xhtml:link rel="alternate" hreflang="zh-HK" href="https://intorza.com/hk"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/cn</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://intorza.com/cn"/>
-  </url>
-  
-  <!-- Country Pages - South Asia -->
-  <url>
-    <loc>https://intorza.com/pk</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ur-PK" href="https://intorza.com/pk"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/bd</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="bn-BD" href="https://intorza.com/bd"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/lk</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="si-LK" href="https://intorza.com/lk"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/np</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ne-NP" href="https://intorza.com/np"/>
-  </url>
-  
-  <!-- Country Pages - Africa -->
-  <url>
-    <loc>https://intorza.com/za</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-ZA" href="https://intorza.com/za"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ng</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-NG" href="https://intorza.com/ng"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ke</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-KE" href="https://intorza.com/ke"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/eg</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://intorza.com/eg"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/gh</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="en-GH" href="https://intorza.com/gh"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ma</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="ar-MA" href="https://intorza.com/ma"/>
-  </url>
-  
-  <!-- Country Pages - South America -->
-  <url>
-    <loc>https://intorza.com/br</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://intorza.com/br"/>
-    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://intorza.com/pt"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/ar</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="es-AR" href="https://intorza.com/ar"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intorza.com/es"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/cl</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="es-CL" href="https://intorza.com/cl"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intorza.com/es"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/co</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="es-CO" href="https://intorza.com/co"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intorza.com/es"/>
-  </url>
-  <url>
-    <loc>https://intorza.com/pe</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://intorza.com/"/>
-    <xhtml:link rel="alternate" hreflang="es-PE" href="https://intorza.com/pe"/>
-    <xhtml:link rel="alternate" hreflang="es-ES" href="https://intorza.com/es"/>
-  </url>
-  
-  <!-- City Pages - USA -->
-  <url>
-    <loc>https://intorza.com/us/new-york</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/us/los-angeles</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/us/chicago</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/us/miami</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/us/houston</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/us/dallas</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - UK -->
-  <url>
-    <loc>https://intorza.com/uk/london</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/uk/manchester</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/uk/birmingham</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - Australia -->
-  <url>
-    <loc>https://intorza.com/au/sydney</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/au/melbourne</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/au/brisbane</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - Canada -->
-  <url>
-    <loc>https://intorza.com/ca/toronto</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/ca/vancouver</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - Germany -->
-  <url>
-    <loc>https://intorza.com/de/berlin</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/de/munich</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - France -->
-  <url>
-    <loc>https://intorza.com/fr/paris</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - UAE -->
-  <url>
-    <loc>https://intorza.com/ae/dubai</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/ae/abu-dhabi</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - Singapore -->
-  <url>
-    <loc>https://intorza.com/sg/singapore</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - Japan -->
-  <url>
-    <loc>https://intorza.com/jp/tokyo</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - South Korea -->
-  <url>
-    <loc>https://intorza.com/kr/seoul</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- City Pages - Brazil -->
-  <url>
-    <loc>https://intorza.com/br/sao-paulo</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
+
+  <!-- Country Pages -->
+  <url><loc>https://intorza.com/us</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://intorza.com/ca</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://intorza.com/mx</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/uk</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://intorza.com/de</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/fr</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/it</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/es</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/nl</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/be</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ch</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/at</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/se</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/no</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/dk</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/fi</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ie</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/pt</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/pl</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/gr</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ae</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://intorza.com/sa</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/qa</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/kw</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/bh</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/om</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/il</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/tr</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/au</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://intorza.com/nz</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/sg</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/my</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/th</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/id</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ph</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/vn</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/jp</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/kr</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/hk</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/tw</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/cn</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/pk</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/bd</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/lk</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/np</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/za</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ng</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ke</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/eg</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/gh</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ma</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/br</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/ar</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/cl</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/co</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/pe</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- City Pages -->
+  <url><loc>https://intorza.com/us/new-york</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/us/los-angeles</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/us/chicago</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/us/miami</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/us/houston</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/us/dallas</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/uk/london</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/uk/manchester</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/uk/birmingham</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/au/sydney</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/au/melbourne</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/au/brisbane</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ca/toronto</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/ca/vancouver</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/de/berlin</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/de/munich</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/fr/paris</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/ae/dubai</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/ae/abu-dhabi</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/sg/singapore</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/in/mumbai</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/in/delhi</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/in/bangalore</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
   <!-- Static Pages -->
-  <url>
-    <loc>https://intorza.com/about</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/blog</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/careers</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/contact</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Legal Pages - Lower Priority -->
-  <url>
-    <loc>https://intorza.com/terms</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/privacy</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/cookies</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://intorza.com/refund</loc>
-    <lastmod>2026-01-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
+  <url><loc>https://intorza.com/about</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://intorza.com/blog</loc><lastmod>2026-03-16</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://intorza.com/contact</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://intorza.com/careers</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Legal Pages -->
+  <url><loc>https://intorza.com/terms</loc><lastmod>2026-03-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://intorza.com/privacy</loc><lastmod>2026-03-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://intorza.com/cookies</loc><lastmod>2026-03-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://intorza.com/refund</loc><lastmod>2026-03-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+
 </urlset>
