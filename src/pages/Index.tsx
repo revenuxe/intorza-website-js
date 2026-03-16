@@ -8,54 +8,82 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/seo/SEOHead";
-import { SpeakableSchema, ItemListSchema, ProfessionalServiceSchema } from "@/components/seo/SchemaMarkup";
 import useGeoRedirect from "@/hooks/useGeoRedirect";
 import GeoRedirectBanner from "@/components/GeoRedirectBanner";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   const { geoData, showRedirectBanner, redirectToLocalPage, dismissBanner } = useGeoRedirect();
 
-  // Feature list for ItemList schema (helps with featured snippets)
-  const featureItems = [
-    { name: "Quotation Builder", url: "https://intorza.com/#features", description: "Create professional interior design quotations with auto-calculations" },
-    { name: "Invoice Generator", url: "https://intorza.com/#features", description: "Generate GST-compliant invoices for Indian businesses" },
-    { name: "Client Management", url: "https://intorza.com/#features", description: "Complete CRM for managing interior design clients" },
-    { name: "Team Collaboration", url: "https://intorza.com/#features", description: "Work together with your design team seamlessly" },
-    { name: "Project Dashboard", url: "https://intorza.com/#features", description: "Track all your interior design projects in one place" },
-    { name: "Site Measurement", url: "https://intorza.com/#features", description: "Calculate and manage site measurements digitally" },
-  ];
+  // Single SoftwareApplication schema for homepage only
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Intorza",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "547",
+      "bestRating": "5"
+    },
+    "description": "All-in-one interior design project management software with quotation builder, invoice generator, client management & team collaboration.",
+    "url": "https://intorza.com",
+    "author": { "@id": "https://intorza.com/#organization" }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Intorza?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intorza is an all-in-one interior design project management software that helps designers and contractors manage quotations, invoices, clients, and teams."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Intorza free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Intorza offers a free plan with core features including quotation builder, invoice management, and client management."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Intorza support GST invoicing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Intorza fully supports GST invoicing with proper tax calculations, GSTIN display, and HSN/SAC codes."
+        }
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Best Interior Design Software 2025 | Free Quotation & Invoice Maker"
         description="Intorza is India's #1 interior design project management software. Create professional quotations, generate GST invoices, manage clients & team collaboration. Trusted by 500+ designers. Start Free!"
-        keywords="interior design software, interior design project management, quotation software for interior designers, invoice software for contractors, interior business management, client management software, interior designer tools, best interior design software India, free quotation software, GST invoice software, interior design app 2025, best quotation maker for designers"
+        keywords="interior design software, quotation software for interior designers, invoice software, interior design project management, GST invoice software, interior design app"
         canonicalUrl="https://intorza.com"
-        ogImage="https://intorza.com/og-image.png"
         includeHreflang={true}
-        speakableSelectors={["h1", ".hero-description", ".feature-title", ".faq-answer"]}
-        category="Business Software"
-        tags={["interior design", "project management", "quotation software", "invoice generator", "GST billing"]}
-        priceRange="Free - ₹999/month"
       />
       
-      {/* AEO: Speakable Schema for voice search optimization */}
-      <SpeakableSchema
-        name="Intorza - Best Interior Design Software"
-        url="https://intorza.com"
-        cssSelectors={["h1", ".hero-description", ".feature-description"]}
-      />
-      
-      {/* AEO: ItemList Schema for featured snippets */}
-      <ItemListSchema
-        name="Top Features of Intorza Interior Design Software"
-        description="Essential tools for interior designers and contractors"
-        items={featureItems}
-      />
-      
-      {/* Professional Service Schema for B2B visibility */}
-      <ProfessionalServiceSchema />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(softwareSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       
       <Header />
       <main>
@@ -69,7 +97,6 @@ const Index = () => {
       </main>
       <Footer />
 
-      {/* Geo-redirect banner for international users */}
       {showRedirectBanner && geoData && (
         <GeoRedirectBanner
           countryCode={geoData.countryCode}

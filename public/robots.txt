@@ -1,71 +1,9 @@
 # Intorza Robots.txt
 # https://intorza.com
-# Last updated: 2026-01-19
 
-# Allow all crawlers
 User-agent: *
 Allow: /
-
-# Disallow admin and private areas only
 Disallow: /admin
-Disallow: /api/
+Disallow: /admin/
 
-# Allow important assets
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.webp$
-Allow: /*.svg$
-Allow: /*.ico$
-
-# Googlebot specific rules - No crawl delay for faster indexing
-User-agent: Googlebot
-Allow: /
-
-# Googlebot Image
-User-agent: Googlebot-Image
-Allow: /
-
-# Bingbot
-User-agent: Bingbot
-Allow: /
-
-# Social Media Bots - Allow for rich previews
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-User-agent: Slackbot
-Allow: /
-
-User-agent: TelegramBot
-Allow: /
-
-# SEO Tools - Limited access
-User-agent: AhrefsBot
-Allow: /
-Crawl-delay: 5
-
-User-agent: SemrushBot
-Allow: /
-Crawl-delay: 5
-
-User-agent: MJ12bot
-Crawl-delay: 10
-
-# Sitemap location
 Sitemap: https://intorza.com/sitemap.xml
-
-# Host
-Host: https://intorza.com
