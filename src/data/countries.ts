@@ -1,5 +1,6 @@
 export interface CountryData {
   code: string;
+  slug: string;
   name: string;
   currency: string;
   currencySymbol: string;
@@ -13,6 +14,11 @@ export interface CountryData {
   seoDescription: string;
   seoKeywords: string;
 }
+
+// Helper to slugify country name
+export const slugifyCountryName = (name: string): string => {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+};
 
 // Get all country codes for hreflang generation
 export const getAllCountryCodes = (): string[] => {
@@ -29,6 +35,7 @@ export const countries: CountryData[] = [
   // North America
   {
     code: "us",
+    slug: "united-states",
     name: "United States",
     currency: "USD",
     currencySymbol: "$",
@@ -44,6 +51,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ca",
+    slug: "canada",
     name: "Canada",
     currency: "USD",
     currencySymbol: "$",
@@ -59,6 +67,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "mx",
+    slug: "mexico",
     name: "Mexico",
     currency: "USD",
     currencySymbol: "$",
@@ -76,6 +85,7 @@ export const countries: CountryData[] = [
   // Europe
   {
     code: "uk",
+    slug: "united-kingdom",
     name: "United Kingdom",
     currency: "USD",
     currencySymbol: "$",
@@ -91,6 +101,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "de",
+    slug: "germany",
     name: "Germany",
     currency: "USD",
     currencySymbol: "$",
@@ -106,6 +117,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "fr",
+    slug: "france",
     name: "France",
     currency: "USD",
     currencySymbol: "$",
@@ -121,6 +133,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "it",
+    slug: "italy",
     name: "Italy",
     currency: "USD",
     currencySymbol: "$",
@@ -136,6 +149,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "es",
+    slug: "spain",
     name: "Spain",
     currency: "USD",
     currencySymbol: "$",
@@ -151,6 +165,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "nl",
+    slug: "netherlands",
     name: "Netherlands",
     currency: "USD",
     currencySymbol: "$",
@@ -166,6 +181,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "be",
+    slug: "belgium",
     name: "Belgium",
     currency: "USD",
     currencySymbol: "$",
@@ -181,6 +197,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ch",
+    slug: "switzerland",
     name: "Switzerland",
     currency: "USD",
     currencySymbol: "$",
@@ -196,6 +213,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "at",
+    slug: "austria",
     name: "Austria",
     currency: "USD",
     currencySymbol: "$",
@@ -211,6 +229,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "se",
+    slug: "sweden",
     name: "Sweden",
     currency: "USD",
     currencySymbol: "$",
@@ -226,6 +245,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "no",
+    slug: "norway",
     name: "Norway",
     currency: "USD",
     currencySymbol: "$",
@@ -241,6 +261,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "dk",
+    slug: "denmark",
     name: "Denmark",
     currency: "USD",
     currencySymbol: "$",
@@ -256,6 +277,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "fi",
+    slug: "finland",
     name: "Finland",
     currency: "USD",
     currencySymbol: "$",
@@ -271,6 +293,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ie",
+    slug: "ireland",
     name: "Ireland",
     currency: "USD",
     currencySymbol: "$",
@@ -286,6 +309,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "pt",
+    slug: "portugal",
     name: "Portugal",
     currency: "USD",
     currencySymbol: "$",
@@ -301,6 +325,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "pl",
+    slug: "poland",
     name: "Poland",
     currency: "USD",
     currencySymbol: "$",
@@ -316,6 +341,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "gr",
+    slug: "greece",
     name: "Greece",
     currency: "USD",
     currencySymbol: "$",
@@ -333,6 +359,7 @@ export const countries: CountryData[] = [
   // Middle East
   {
     code: "ae",
+    slug: "united-arab-emirates",
     name: "United Arab Emirates",
     currency: "USD",
     currencySymbol: "$",
@@ -348,6 +375,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "sa",
+    slug: "saudi-arabia",
     name: "Saudi Arabia",
     currency: "USD",
     currencySymbol: "$",
@@ -363,6 +391,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "qa",
+    slug: "qatar",
     name: "Qatar",
     currency: "USD",
     currencySymbol: "$",
@@ -378,6 +407,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "kw",
+    slug: "kuwait",
     name: "Kuwait",
     currency: "USD",
     currencySymbol: "$",
@@ -393,6 +423,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "bh",
+    slug: "bahrain",
     name: "Bahrain",
     currency: "USD",
     currencySymbol: "$",
@@ -408,6 +439,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "om",
+    slug: "oman",
     name: "Oman",
     currency: "USD",
     currencySymbol: "$",
@@ -423,6 +455,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "il",
+    slug: "israel",
     name: "Israel",
     currency: "USD",
     currencySymbol: "$",
@@ -438,6 +471,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "tr",
+    slug: "turkey",
     name: "Turkey",
     currency: "USD",
     currencySymbol: "$",
@@ -455,6 +489,7 @@ export const countries: CountryData[] = [
   // Asia Pacific
   {
     code: "au",
+    slug: "australia",
     name: "Australia",
     currency: "USD",
     currencySymbol: "$",
@@ -470,6 +505,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "nz",
+    slug: "new-zealand",
     name: "New Zealand",
     currency: "USD",
     currencySymbol: "$",
@@ -485,6 +521,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "sg",
+    slug: "singapore",
     name: "Singapore",
     currency: "USD",
     currencySymbol: "$",
@@ -500,6 +537,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "my",
+    slug: "malaysia",
     name: "Malaysia",
     currency: "USD",
     currencySymbol: "$",
@@ -515,6 +553,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "th",
+    slug: "thailand",
     name: "Thailand",
     currency: "USD",
     currencySymbol: "$",
@@ -530,6 +569,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "id",
+    slug: "indonesia",
     name: "Indonesia",
     currency: "USD",
     currencySymbol: "$",
@@ -545,6 +585,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ph",
+    slug: "philippines",
     name: "Philippines",
     currency: "USD",
     currencySymbol: "$",
@@ -560,6 +601,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "vn",
+    slug: "vietnam",
     name: "Vietnam",
     currency: "USD",
     currencySymbol: "$",
@@ -575,6 +617,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "jp",
+    slug: "japan",
     name: "Japan",
     currency: "USD",
     currencySymbol: "$",
@@ -590,6 +633,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "kr",
+    slug: "south-korea",
     name: "South Korea",
     currency: "USD",
     currencySymbol: "$",
@@ -605,6 +649,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "hk",
+    slug: "hong-kong",
     name: "Hong Kong",
     currency: "USD",
     currencySymbol: "$",
@@ -620,6 +665,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "tw",
+    slug: "taiwan",
     name: "Taiwan",
     currency: "USD",
     currencySymbol: "$",
@@ -635,6 +681,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "cn",
+    slug: "china",
     name: "China",
     currency: "USD",
     currencySymbol: "$",
@@ -651,7 +698,24 @@ export const countries: CountryData[] = [
 
   // South Asia
   {
+    code: "in",
+    slug: "india",
+    name: "India",
+    currency: "INR",
+    currencySymbol: "₹",
+    price: "₹0",
+    priceValue: 0,
+    region: "South Asia",
+    locale: "en-IN",
+    trustedByText: "Trusted by 500+ Interior Professionals in India",
+    heroSubtitle: "All-in-one interior design project management software with quotation builder, invoice generator, client management & team collaboration. Trusted by interior designers and contractors across India.",
+    seoTitle: "Best Interior Design Software India 2025 | Free Quotation & Invoice Maker",
+    seoDescription: "Intorza is India's leading interior design project management software. Create professional quotations, generate invoices, manage clients & team collaboration. Start Free!",
+    seoKeywords: "interior design software India, quotation software, invoice software, interior business management India",
+  },
+  {
     code: "pk",
+    slug: "pakistan",
     name: "Pakistan",
     currency: "USD",
     currencySymbol: "$",
@@ -667,6 +731,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "bd",
+    slug: "bangladesh",
     name: "Bangladesh",
     currency: "USD",
     currencySymbol: "$",
@@ -682,6 +747,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "lk",
+    slug: "sri-lanka",
     name: "Sri Lanka",
     currency: "USD",
     currencySymbol: "$",
@@ -697,6 +763,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "np",
+    slug: "nepal",
     name: "Nepal",
     currency: "USD",
     currencySymbol: "$",
@@ -714,6 +781,7 @@ export const countries: CountryData[] = [
   // Africa
   {
     code: "za",
+    slug: "south-africa",
     name: "South Africa",
     currency: "USD",
     currencySymbol: "$",
@@ -729,6 +797,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ng",
+    slug: "nigeria",
     name: "Nigeria",
     currency: "USD",
     currencySymbol: "$",
@@ -744,6 +813,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ke",
+    slug: "kenya",
     name: "Kenya",
     currency: "USD",
     currencySymbol: "$",
@@ -759,6 +829,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "eg",
+    slug: "egypt",
     name: "Egypt",
     currency: "USD",
     currencySymbol: "$",
@@ -774,6 +845,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "gh",
+    slug: "ghana",
     name: "Ghana",
     currency: "USD",
     currencySymbol: "$",
@@ -789,6 +861,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ma",
+    slug: "morocco",
     name: "Morocco",
     currency: "USD",
     currencySymbol: "$",
@@ -806,6 +879,7 @@ export const countries: CountryData[] = [
   // South America
   {
     code: "br",
+    slug: "brazil",
     name: "Brazil",
     currency: "USD",
     currencySymbol: "$",
@@ -821,6 +895,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "ar",
+    slug: "argentina",
     name: "Argentina",
     currency: "USD",
     currencySymbol: "$",
@@ -836,6 +911,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "cl",
+    slug: "chile",
     name: "Chile",
     currency: "USD",
     currencySymbol: "$",
@@ -851,6 +927,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "co",
+    slug: "colombia",
     name: "Colombia",
     currency: "USD",
     currencySymbol: "$",
@@ -866,6 +943,7 @@ export const countries: CountryData[] = [
   },
   {
     code: "pe",
+    slug: "peru",
     name: "Peru",
     currency: "USD",
     currencySymbol: "$",
@@ -885,6 +963,10 @@ export const getCountryByCode = (code: string): CountryData | undefined => {
   return countries.find(c => c.code === code.toLowerCase());
 };
 
+export const getCountryBySlug = (slug: string): CountryData | undefined => {
+  return countries.find(c => c.slug === slug.toLowerCase());
+};
+
 export const getCountriesByRegion = (): Record<string, CountryData[]> => {
   return countries.reduce((acc, country) => {
     if (!acc[country.region]) {
@@ -898,3 +980,4 @@ export const getCountriesByRegion = (): Record<string, CountryData[]> => {
 export const getAllRegions = (): string[] => {
   return [...new Set(countries.map(c => c.region))];
 };
+

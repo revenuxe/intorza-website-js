@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Mail, MapPin, Linkedin, Twitter, Instagram, Globe, ChevronDown } from "lucide-react";
+import Image from "next/image";
 import intorzaLogo from "@/assets/intorza-logo.webp";
 import { countries, getCountriesByRegion } from "@/data/countries";
 import {
@@ -20,9 +22,9 @@ const Footer = () => {
 
   const footerLinks = {
     product: [
-      { label: "Features", href: "#features" },
-      { label: "How It Works", href: "#how-it-works" },
-      { label: "Testimonials", href: "#testimonials" },
+      { label: "Features", href: "/#features" },
+      { label: "How It Works", href: "/#how-it-works" },
+      { label: "Testimonials", href: "/#testimonials" },
     ],
     company: [
       { label: "About Us", href: "/about" },
@@ -44,7 +46,13 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <img src={intorzaLogo} alt="Intorza" className="h-12 w-auto mb-6 brightness-0 invert" />
+            <Image 
+              src={intorzaLogo} 
+              alt="Intorza" 
+              width={150} 
+              height={48} 
+              className="h-12 w-auto mb-6 brightness-0 invert" 
+            />
             <p className="text-secondary-foreground/70 mb-6 max-w-sm">
               Streamline your interior business operations with Intorza. 
               From site measurements to invoices, manage everything in one place.
@@ -68,9 +76,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                  <Link href={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -82,15 +90,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  {link.href.startsWith("/") ? (
-                    <Link to={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a href={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                      {link.label}
-                    </a>
-                  )}
+                  <Link href={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -102,7 +104,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
+                  <Link href={link.href} className="text-secondary-foreground/70 hover:text-primary transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -134,8 +136,8 @@ const Footer = () => {
                         {region}
                       </DropdownMenuLabel>
                       {regionCountries.map((country) => (
-                        <DropdownMenuItem key={country.code} asChild>
-                          <Link to={`/${country.code}`} className="cursor-pointer">
+                        <DropdownMenuItem key={country.slug} asChild>
+                          <Link href={`/${country.slug}`} className="cursor-pointer">
                             {country.name}
                           </Link>
                         </DropdownMenuItem>
@@ -155,8 +157,8 @@ const Footer = () => {
               if (!country) return null;
               return (
                 <Link
-                  key={code}
-                  to={`/${code}`}
+                  key={country.slug}
+                  href={`/${country.slug}`}
                   className="text-xs px-3 py-1.5 rounded-full bg-secondary-foreground/5 text-secondary-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all duration-200"
                 >
                   {country.name}
@@ -175,13 +177,13 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary-foreground/5 flex items-center justify-center text-secondary-foreground/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label="LinkedIn">
+              <a href="https://linkedin.com/company/intorza" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-secondary-foreground/5 flex items-center justify-center text-secondary-foreground/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary-foreground/5 flex items-center justify-center text-secondary-foreground/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label="Twitter">
+              <a href="https://twitter.com/intorza" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-secondary-foreground/5 flex items-center justify-center text-secondary-foreground/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-secondary-foreground/5 flex items-center justify-center text-secondary-foreground/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label="Instagram">
+              <a href="https://instagram.com/intorza" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-secondary-foreground/5 flex items-center justify-center text-secondary-foreground/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>

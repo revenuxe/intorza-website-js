@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
-import { BreadcrumbSchema } from "./SchemaMarkup";
+import { cn } from "@/lib/utils";
 
 interface BreadcrumbItem {
   name: string;
@@ -12,46 +12,35 @@ interface BreadcrumbsProps {
   className?: string;
 }
 
-const Breadcrumbs = ({ items, className = "" }: BreadcrumbsProps) => {
-  const allItems = [
-    { name: "Home", url: "https://intorza.com" },
-    ...items,
-  ];
-
+const Breadcrumbs = ({ items, className }: BreadcrumbsProps) => {
   return (
-    <>
-      <BreadcrumbSchema items={allItems} />
-      <nav
-        aria-label="Breadcrumb"
-        className={`flex items-center gap-2 text-sm text-muted-foreground ${className}`}
+    <nav className={cn("flex items-center space-x-2 text-sm text-muted-foreground overflow-x-auto whitespace-nowrap pb-2 md:pb-0", className)}>
+      <Link
+        href="/"
+        className="flex items-center hover:text-primary transition-colors"
       >
-        <Link
-          to="/"
-          className="flex items-center gap-1 hover:text-primary transition-colors"
-          aria-label="Home"
-        >
-          <Home className="w-4 h-4" />
-          <span className="sr-only">Home</span>
-        </Link>
-        {items.map((item, index) => (
-          <div key={item.url} className="flex items-center gap-2">
-            <ChevronRight className="w-4 h-4 text-muted-foreground/50" />
-            {index === items.length - 1 ? (
-              <span className="text-foreground font-medium" aria-current="page">
-                {item.name}
-              </span>
-            ) : (
-              <Link
-                to={item.url.replace("https://intorza.com", "")}
-                className="hover:text-primary transition-colors"
-              >
-                {item.name}
-              </Link>
-            )}
-          </div>
-        ))}
-      </nav>
-    </>
+        <Home className="w-4 h-4" />
+        <span className="sr-only">Home</span>
+      </Link>
+      
+      {items.map((item, index) => (
+        <div key={item.url} className="flex items-center space-x-2">
+          <ChevronRight className="w-4 h-4 flex-shrink-0" />
+          {index === items.length - 1 ? (
+            <span className="font-medium text-foreground truncate max-w-[200px] md:max-w-none">
+              {item.name}
+            </span>
+          ) : (
+            <Link
+              href={item.url}
+              className="hover:text-primary transition-colors"
+            >
+              {item.name}
+            </Link>
+          )}
+        </div>
+      ))}
+    </nav>
   );
 };
 

@@ -1,7 +1,10 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import intorzaLogo from "@/assets/intorza-logo.webp";
 
 const Header = () => {
@@ -17,10 +20,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: "Features", href: "#features" },
-    { label: "How It Works", href: "#how-it-works" },
+    { label: "Features", href: "/#features" },
+    { label: "How It Works", href: "/#how-it-works" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -32,34 +35,28 @@ const Header = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img
+        <Link href="/" className="flex items-center gap-2">
+          <Image
             src={intorzaLogo}
             alt="Intorza"
+            width={150}
+            height={48}
             className="h-10 md:h-12 w-auto object-contain"
+            priority
+            loading="eager"
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            link.href.startsWith("/") ? (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            )
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-foreground/80 hover:text-primary font-medium transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
 
@@ -95,25 +92,14 @@ const Header = () => {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-background shadow-lg border-t border-border animate-fade-up z-50">
           <nav className="container-custom py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
-              link.href.startsWith("/") ? (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              )
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
               <Button variant="outline" asChild className="w-full">

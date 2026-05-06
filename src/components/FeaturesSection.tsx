@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { 
   LayoutDashboard, 
   Ruler, 
@@ -72,7 +73,7 @@ const features = [
 
 const showcases = [
   {
-    image: dashboardPreview,
+    image: "/assets/dashboard-preview.png",
     tag: "Dashboard",
     title: "Complete Business Overview",
     description: "Monitor your entire business at a glance. Track quotations, projects, revenue, and team performance with real-time analytics.",
@@ -87,7 +88,7 @@ const showcases = [
     colorClass: "bg-blue-500/10",
   },
   {
-    image: siteMeasurementPreview,
+    image: "/assets/site-measurement-preview.png",
     tag: "Site Measurement",
     title: "Organize Site Visits Efficiently",
     description: "Create and manage site measurements for all your projects. Assign to team members and track progress easily.",
@@ -97,103 +98,69 @@ const showcases = [
       "Track site visit status",
       "Centralized location data",
     ],
-    ctaText: "Start Measurement",
+    ctaText: "Start Measuring",
     ctaLink: "https://app.intorza.com",
     colorClass: "bg-primary/10",
-    reverse: true,
   },
   {
-    image: quotationPreview,
-    tag: "Create Quotation",
-    title: "Build Professional Quotations",
-    description: "Create detailed quotations with customizable templates, project details, and professional formatting.",
+    image: "/assets/quotation-preview.png",
+    tag: "Quotation Builder",
+    title: "Professional Quotations in Minutes",
+    description: "Create stunning, detailed quotations for your clients. Add items, apply taxes, and manage versions effortlessly.",
     points: [
-      "Customizable templates",
-      "Auto-calculate totals with tax",
-      "Professional PDF export",
-      "Save client information",
+      "Customizable item templates",
+      "Automatic tax calculation",
+      "Multiple revision support",
+      "One-click PDF generation",
     ],
     ctaText: "Create Quotation",
     ctaLink: "https://app.intorza.com",
-    colorClass: "bg-intorza-green/20",
+    colorClass: "bg-intorza-green/10",
   },
   {
-    image: myQuotationPreview,
-    tag: "My Quotations",
-    title: "Track Quotation Status",
-    description: "Manage all your quotations in one place. Mark as accepted or rejected, edit details, and generate PDFs instantly.",
+    image: "/assets/invoice-preview.png",
+    tag: "Invoice Management",
+    title: "Seamless Billing & Payments",
+    description: "Convert quotations to invoices instantly. Manage GST, track payments, and send professional bills to your clients.",
     points: [
-      "Track pending quotations",
-      "Mark accepted/rejected",
-      "Edit quotation details",
-      "Download PDF instantly",
+      "Instant invoice generation",
+      "GST & tax compliance",
+      "Payment status tracking",
+      "Professional bill templates",
     ],
-    ctaText: "View Quotations",
+    ctaText: "Manage Invoices",
+    ctaLink: "https://app.intorza.com",
+    colorClass: "bg-intorza-amber/10",
+  },
+  {
+    image: "/assets/clients-preview.png",
+    tag: "Client CRM",
+    title: "Centralized Client Database",
+    description: "Keep all your client information, project history, and communication logs in one secure place.",
+    points: [
+      "Detailed client profiles",
+      "Project & billing history",
+      "Contact management",
+      "Quick search & filtering",
+    ],
+    ctaText: "Add Clients",
     ctaLink: "https://app.intorza.com",
     colorClass: "bg-secondary/10",
-    reverse: true,
   },
   {
-    image: myProjectPreview,
-    tag: "My Projects",
-    title: "Manage Converted Projects",
-    description: "Track all your converted projects with detailed overview including quotations, invoices, and financial summary.",
+    image: "/assets/team-preview.png",
+    tag: "Team Management",
+    title: "Effortless Team Collaboration",
+    description: "Manage your team's roles, attendance, and assignments. Improve productivity with clear responsibilities.",
     points: [
-      "Project overview dashboard",
-      "Track total value & payments",
-      "View associated quotations",
-      "Monitor pending amounts",
+      "Role-based access control",
+      "Attendance tracking",
+      "Project assignments",
+      "Performance monitoring",
     ],
-    ctaText: "View Projects",
+    ctaText: "Invite Team",
     ctaLink: "https://app.intorza.com",
     colorClass: "bg-purple-500/10",
-  },
-  {
-    image: invoicePreview,
-    tag: "Invoice Management",
-    title: "Effortless Invoicing & Payments",
-    description: "Generate invoices from accepted quotations instantly. Track partial payments and manage outstanding balances.",
-    points: [
-      "One-click invoice generation",
-      "Partial payment tracking",
-      "Payment progress bar",
-      "Download & share PDF",
-    ],
-    ctaText: "Create Invoice",
-    ctaLink: "https://app.intorza.com",
-    colorClass: "bg-intorza-amber/20",
-    reverse: true,
-  },
-  {
-    image: clientsPreview,
-    tag: "Client Management",
-    title: "Build Lasting Client Relationships",
-    description: "Keep all your client information organized. Track project history, billing status, and outstanding balances for each client.",
-    points: [
-      "Complete client profiles",
-      "Project history at a glance",
-      "Billing summary per client",
-      "Outstanding balance tracking",
-    ],
-    ctaText: "Manage Clients",
-    ctaLink: "https://app.intorza.com",
-    colorClass: "bg-teal-500/10",
-  },
-  {
-    image: teamPreview,
-    tag: "Team Management",
-    title: "Collaborate with Your Team",
-    description: "Add team members, create project teams, track attendance, and manage assignments all in one place.",
-    points: [
-      "Add unlimited team members",
-      "Create project teams",
-      "Track attendance daily",
-      "Assign roles & permissions",
-    ],
-    ctaText: "Manage Team",
-    ctaLink: "https://app.intorza.com",
-    colorClass: "bg-rose-500/10",
-    reverse: true,
   },
 ];
 
@@ -214,10 +181,13 @@ const FeaturesSection = () => {
               <div className={`${showcase.reverse ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div className="relative group">
                   <div className={`absolute -inset-4 ${showcase.colorClass} rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
-                  <img
+                  <Image
                     src={showcase.image}
                     alt={showcase.title}
+                    width={800}
+                    height={600}
                     className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 w-full h-auto object-cover object-top"
+                    priority={index < 2}
                   />
                 </div>
                 {/* CTA Button Below Image */}

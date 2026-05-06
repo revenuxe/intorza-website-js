@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FolderOpen, Sparkles, Users } from "lucide-react";
-import dashboardPreview from "@/assets/dashboard-preview.png";
+import Image from "next/image";
+
 const HeroSection = () => {
   const benefits = ["No credit card required", "Setup in 2 minutes", "Instant access"];
   return <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
@@ -65,13 +66,18 @@ const HeroSection = () => {
           {/* Dashboard Preview */}
           <div className="relative animate-scale-in">
             <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/10 to-primary/20 rounded-3xl blur-2xl opacity-60 animate-pulse" />
-            <div className="relative bg-card rounded-2xl shadow-lg overflow-hidden border border-border/50 hover:shadow-2xl transition-shadow duration-500">
-              <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border">
-                <div className="w-3 h-3 rounded-full bg-destructive/80" />
-                <div className="w-3 h-3 rounded-full bg-intorza-amber" />
-                <div className="w-3 h-3 rounded-full bg-intorza-green" />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-card rounded-2xl shadow-2xl border border-border overflow-hidden">
+                <Image 
+                  src="/assets/dashboard-preview.png" 
+                  alt="Interior Design Project Management Dashboard - Intorza" 
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto"
+                  priority
+                />
               </div>
-              <img src={dashboardPreview} alt="Interior Design Project Management Dashboard - Intorza" className="w-full h-auto" />
             </div>
 
             {/* Floating Stats Cards */}

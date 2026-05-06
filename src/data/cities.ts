@@ -1,7 +1,10 @@
+import { countries } from "./countries";
+
 export interface CityData {
   slug: string;
   name: string;
   countryCode: string;
+  countrySlug: string;
   countryName: string;
   population: string;
   region: string;
@@ -21,6 +24,7 @@ export const cities: CityData[] = [
     slug: "new-york",
     name: "New York",
     countryCode: "us",
+    countrySlug: "united-states",
     countryName: "United States",
     population: "8.3 million",
     region: "Northeast",
@@ -37,6 +41,7 @@ export const cities: CityData[] = [
     slug: "los-angeles",
     name: "Los Angeles",
     countryCode: "us",
+    countrySlug: "united-states",
     countryName: "United States",
     population: "4 million",
     region: "West Coast",
@@ -53,6 +58,7 @@ export const cities: CityData[] = [
     slug: "chicago",
     name: "Chicago",
     countryCode: "us",
+    countrySlug: "united-states",
     countryName: "United States",
     population: "2.7 million",
     region: "Midwest",
@@ -69,6 +75,7 @@ export const cities: CityData[] = [
     slug: "miami",
     name: "Miami",
     countryCode: "us",
+    countrySlug: "united-states",
     countryName: "United States",
     population: "450,000",
     region: "Southeast",
@@ -85,6 +92,7 @@ export const cities: CityData[] = [
     slug: "houston",
     name: "Houston",
     countryCode: "us",
+    countrySlug: "united-states",
     countryName: "United States",
     population: "2.3 million",
     region: "Southwest",
@@ -101,6 +109,7 @@ export const cities: CityData[] = [
     slug: "dallas",
     name: "Dallas",
     countryCode: "us",
+    countrySlug: "united-states",
     countryName: "United States",
     population: "1.3 million",
     region: "Southwest",
@@ -119,6 +128,7 @@ export const cities: CityData[] = [
     slug: "london",
     name: "London",
     countryCode: "uk",
+    countrySlug: "united-kingdom",
     countryName: "United Kingdom",
     population: "9 million",
     region: "Greater London",
@@ -135,6 +145,7 @@ export const cities: CityData[] = [
     slug: "manchester",
     name: "Manchester",
     countryCode: "uk",
+    countrySlug: "united-kingdom",
     countryName: "United Kingdom",
     population: "550,000",
     region: "Northwest England",
@@ -151,6 +162,7 @@ export const cities: CityData[] = [
     slug: "birmingham",
     name: "Birmingham",
     countryCode: "uk",
+    countrySlug: "united-kingdom",
     countryName: "United Kingdom",
     population: "1.1 million",
     region: "West Midlands",
@@ -169,6 +181,7 @@ export const cities: CityData[] = [
     slug: "sydney",
     name: "Sydney",
     countryCode: "au",
+    countrySlug: "australia",
     countryName: "Australia",
     population: "5.3 million",
     region: "New South Wales",
@@ -185,6 +198,7 @@ export const cities: CityData[] = [
     slug: "melbourne",
     name: "Melbourne",
     countryCode: "au",
+    countrySlug: "australia",
     countryName: "Australia",
     population: "5 million",
     region: "Victoria",
@@ -201,6 +215,7 @@ export const cities: CityData[] = [
     slug: "brisbane",
     name: "Brisbane",
     countryCode: "au",
+    countrySlug: "australia",
     countryName: "Australia",
     population: "2.5 million",
     region: "Queensland",
@@ -219,6 +234,7 @@ export const cities: CityData[] = [
     slug: "toronto",
     name: "Toronto",
     countryCode: "ca",
+    countrySlug: "canada",
     countryName: "Canada",
     population: "2.9 million",
     region: "Ontario",
@@ -235,6 +251,7 @@ export const cities: CityData[] = [
     slug: "vancouver",
     name: "Vancouver",
     countryCode: "ca",
+    countrySlug: "canada",
     countryName: "Canada",
     population: "675,000",
     region: "British Columbia",
@@ -253,6 +270,7 @@ export const cities: CityData[] = [
     slug: "berlin",
     name: "Berlin",
     countryCode: "de",
+    countrySlug: "germany",
     countryName: "Germany",
     population: "3.6 million",
     region: "Berlin-Brandenburg",
@@ -269,6 +287,7 @@ export const cities: CityData[] = [
     slug: "munich",
     name: "Munich",
     countryCode: "de",
+    countrySlug: "germany",
     countryName: "Germany",
     population: "1.5 million",
     region: "Bavaria",
@@ -287,6 +306,7 @@ export const cities: CityData[] = [
     slug: "paris",
     name: "Paris",
     countryCode: "fr",
+    countrySlug: "france",
     countryName: "France",
     population: "2.1 million",
     region: "Île-de-France",
@@ -305,6 +325,7 @@ export const cities: CityData[] = [
     slug: "dubai",
     name: "Dubai",
     countryCode: "ae",
+    countrySlug: "united-arab-emirates",
     countryName: "United Arab Emirates",
     population: "3.5 million",
     region: "Dubai",
@@ -321,6 +342,7 @@ export const cities: CityData[] = [
     slug: "abu-dhabi",
     name: "Abu Dhabi",
     countryCode: "ae",
+    countrySlug: "united-arab-emirates",
     countryName: "United Arab Emirates",
     population: "1.5 million",
     region: "Abu Dhabi",
@@ -339,6 +361,7 @@ export const cities: CityData[] = [
     slug: "singapore",
     name: "Singapore",
     countryCode: "sg",
+    countrySlug: "singapore",
     countryName: "Singapore",
     population: "5.5 million",
     region: "Singapore",
@@ -357,6 +380,7 @@ export const cities: CityData[] = [
     slug: "mumbai",
     name: "Mumbai",
     countryCode: "in",
+    countrySlug: "india",
     countryName: "India",
     population: "20 million",
     region: "Maharashtra",
@@ -373,6 +397,7 @@ export const cities: CityData[] = [
     slug: "delhi",
     name: "Delhi",
     countryCode: "in",
+    countrySlug: "india",
     countryName: "India",
     population: "16 million",
     region: "Delhi NCR",
@@ -389,6 +414,7 @@ export const cities: CityData[] = [
     slug: "bangalore",
     name: "Bangalore",
     countryCode: "in",
+    countrySlug: "india",
     countryName: "India",
     population: "12 million",
     region: "Karnataka",
@@ -403,22 +429,29 @@ export const cities: CityData[] = [
   },
 ];
 
-// Get cities by country code
-export const getCitiesByCountry = (countryCode: string): CityData[] => {
-  return cities.filter(city => city.countryCode === countryCode.toLowerCase());
+// Get cities by country code or slug
+export const getCitiesByCountry = (countryId: string): CityData[] => {
+  const normalized = countryId.toLowerCase();
+  return cities.filter(city => 
+    city.countryCode === normalized || city.countrySlug === normalized
+  );
 };
 
-// Get city by slug and country code
-export const getCityBySlug = (countryCode: string, citySlug: string): CityData | undefined => {
+// Get city by slug and country slug
+export const getCityBySlug = (countryId: string, citySlug: string): CityData | undefined => {
+  const normalizedCountry = countryId.toLowerCase();
+  const normalizedCity = citySlug.toLowerCase();
   return cities.find(
-    city => city.countryCode === countryCode.toLowerCase() && city.slug === citySlug.toLowerCase()
+    city => (city.countryCode === normalizedCountry || city.countrySlug === normalizedCountry) && 
+            city.slug === normalizedCity
   );
 };
 
 // Get all city slugs for sitemap generation
-export const getAllCitySlugs = (): { countryCode: string; citySlug: string }[] => {
+export const getAllCitySlugs = (): { countrySlug: string; citySlug: string }[] => {
   return cities.map(city => ({
-    countryCode: city.countryCode,
+    countrySlug: city.countrySlug,
     citySlug: city.slug,
   }));
 };
+

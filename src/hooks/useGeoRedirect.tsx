@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useRouter, usePathname } from "next/navigation";
 import { countries } from "@/data/countries";
 
 interface GeoData {
@@ -16,8 +16,8 @@ export const useGeoRedirect = () => {
   const [geoData, setGeoData] = useState<GeoData | null>(null);
   const [showRedirectBanner, setShowRedirectBanner] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const detectGeo = async () => {
@@ -72,7 +72,7 @@ export const useGeoRedirect = () => {
 
     const checkRedirectNeeded = (geo: GeoData) => {
       // Only show banner on homepage
-      if (location.pathname !== "/") {
+      if (pathname !== "/") {
         setShowRedirectBanner(false);
         return;
       }
@@ -89,7 +89,7 @@ export const useGeoRedirect = () => {
     };
 
     detectGeo();
-  }, [location.pathname]);
+  }, [pathname]);
 
   const dismissBanner = () => {
     localStorage.setItem(GEO_REDIRECT_KEY, "true");
@@ -98,7 +98,12 @@ export const useGeoRedirect = () => {
 
   const redirectToLocalPage = () => {
     if (geoData?.countryCode) {
-      navigate(`/${geoData.countryCode}`);
+      const country = countries.find(c => c.code === geoData.countryCode);
+      if (country) {
+        router.push(`/${country.slug}`);
+      } else {
+        router.push(`/${geoData.countryCode}`);
+      }
       dismissBanner();
     }
   };
