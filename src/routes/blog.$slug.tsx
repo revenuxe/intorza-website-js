@@ -139,7 +139,7 @@ function BlogDetail() {
             <div className="container-custom max-w-5xl">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">Related Articles</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                {related.map((r) => (
+                {related.map((r: typeof post) => (
                   <article key={r.id} className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300">
                     <Link to="/blog/$slug" params={{ slug: r.slug }}>
                       {r.cover_image ? (
