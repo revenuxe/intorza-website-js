@@ -115,7 +115,7 @@ function CityPage() {
               {city.heroSubtitle}
             </p>
             <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {city.landmarks.map((l) => (
+              {city.landmarks.map((l: string) => (
                 <span key={l} className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm">
                   {l}
                 </span>

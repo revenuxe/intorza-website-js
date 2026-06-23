@@ -9,38 +9,72 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CountryRouteImport } from './routes/$country'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CountryIndexRouteImport } from './routes/$country.index'
+import { Route as CountryCityRouteImport } from './routes/$country.$city'
 
+const CountryRoute = CountryRouteImport.update({
+  id: '/$country',
+  path: '/$country',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CountryIndexRoute = CountryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CountryRoute,
+} as any)
+const CountryCityRoute = CountryCityRouteImport.update({
+  id: '/$city',
+  path: '/$city',
+  getParentRoute: () => CountryRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$country': typeof CountryRouteWithChildren
+  '/$country/$city': typeof CountryCityRoute
+  '/$country/': typeof CountryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$country/$city': typeof CountryCityRoute
+  '/$country': typeof CountryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$country': typeof CountryRouteWithChildren
+  '/$country/$city': typeof CountryCityRoute
+  '/$country/': typeof CountryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/$country' | '/$country/$city' | '/$country/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/$country/$city' | '/$country'
+  id: '__root__' | '/' | '/$country' | '/$country/$city' | '/$country/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CountryRoute: typeof CountryRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/$country': {
+      id: '/$country'
+      path: '/$country'
+      fullPath: '/$country'
+      preLoaderRoute: typeof CountryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +82,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$country/': {
+      id: '/$country/'
+      path: '/'
+      fullPath: '/$country/'
+      preLoaderRoute: typeof CountryIndexRouteImport
+      parentRoute: typeof CountryRoute
+    }
+    '/$country/$city': {
+      id: '/$country/$city'
+      path: '/$city'
+      fullPath: '/$country/$city'
+      preLoaderRoute: typeof CountryCityRouteImport
+      parentRoute: typeof CountryRoute
+    }
   }
 }
 
+interface CountryRouteChildren {
+  CountryCityRoute: typeof CountryCityRoute
+  CountryIndexRoute: typeof CountryIndexRoute
+}
+
+const CountryRouteChildren: CountryRouteChildren = {
+  CountryCityRoute: CountryCityRoute,
+  CountryIndexRoute: CountryIndexRoute,
+}
+
+const CountryRouteWithChildren =
+  CountryRoute._addFileChildren(CountryRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CountryRoute: CountryRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
