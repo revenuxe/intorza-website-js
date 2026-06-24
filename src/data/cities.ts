@@ -303,8 +303,16 @@ export const cities: CityData[] = [
   },
 ];
 
+import { getCountryBySlug } from "@/data/countries";
+
 export const getCitiesByCountry = (countryCode: string): CityData[] =>
   cities.filter((city) => city.countryCode === countryCode.toLowerCase());
+
+export const getCitiesByCountrySlug = (countrySlug: string): CityData[] => {
+  const country = getCountryBySlug(countrySlug);
+  if (!country) return [];
+  return cities.filter((city) => city.countryCode === country.code);
+};
 
 export const getCityBySlug = (countryCode: string, citySlug: string): CityData | undefined =>
   cities.find(
@@ -312,5 +320,17 @@ export const getCityBySlug = (countryCode: string, citySlug: string): CityData |
       city.countryCode === countryCode.toLowerCase() && city.slug === citySlug.toLowerCase(),
   );
 
+export const getCityByCountrySlug = (
+  countrySlug: string,
+  citySlug: string,
+): CityData | undefined => {
+  const country = getCountryBySlug(countrySlug);
+  if (!country) return undefined;
+  return cities.find(
+    (city) => city.countryCode === country.code && city.slug === citySlug.toLowerCase(),
+  );
+};
+
 export const getAllCitySlugs = (): { countryCode: string; citySlug: string }[] =>
   cities.map((city) => ({ countryCode: city.countryCode, citySlug: city.slug }));
+
