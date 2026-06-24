@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Target, Eye, Heart, Zap } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 
 const TITLE = "About Intorza — Our Mission to Empower Interior Designers";
@@ -93,6 +93,29 @@ function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="section-padding relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-secondary/90" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-intorza-amber/10 rounded-full blur-3xl" />
+          <div className="container-custom max-w-4xl relative z-10 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 text-secondary-foreground/90 text-sm font-medium mb-6">
+              <Sparkles className="w-4 h-4 text-primary" />
+              Part of the Revenuxe family
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-foreground mb-6 leading-tight">
+              A Product by <span className="text-primary">Revenuxe</span>
+            </h2>
+            <p className="text-lg md:text-xl text-secondary-foreground/70 max-w-2xl mx-auto mb-10">
+              Intorza is proudly built and backed by Revenuxe — a studio crafting modern SaaS products that help small businesses run smarter, faster, and more beautifully.
+            </p>
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
+              <a href="https://www.revenuxe.com" target="_blank" rel="noopener noreferrer">
+                Visit Revenuxe <ExternalLink className="w-5 h-5 ml-2" />
+              </a>
+            </Button>
           </div>
         </section>
 

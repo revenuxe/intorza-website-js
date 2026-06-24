@@ -34,7 +34,7 @@ export const Route = createFileRoute("/terms")({
             <h2 className="font-display text-2xl font-semibold text-foreground pt-4">Governing Law</h2>
             <p>These Terms are governed by the laws of India. Disputes are subject to arbitration in Bangalore.</p>
             <h2 className="font-display text-2xl font-semibold text-foreground pt-4">Contact</h2>
-            <p>Email <a className="text-primary underline" href="mailto:legal@intorza.com">legal@intorza.com</a>.</p>
+            <p>Email <a className="text-primary underline" href="mailto:intorza.com@gmail.com">intorza.com@gmail.com</a>.</p>
           </div>
         </div>
       </main>
