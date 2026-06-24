@@ -186,10 +186,15 @@ export const countries: CountryData[] = [
 ];
 
 export const getAllCountryCodes = (): string[] => countries.map((c) => c.code);
+export const getAllCountrySlugs = (): string[] => countries.map((c) => c.slug);
 export const getLocaleByCode = (code: string): string =>
   countries.find((c) => c.code === code.toLowerCase())?.locale || "en";
 export const getCountryByCode = (code: string): CountryData | undefined =>
   countries.find((c) => c.code === code.toLowerCase());
+export const getCountryBySlug = (slug: string): CountryData | undefined => {
+  const s = slug.toLowerCase();
+  return countries.find((c) => c.slug === s) || countries.find((c) => c.code === s);
+};
 
 export const getCountriesByRegion = (): Record<string, CountryData[]> =>
   countries.reduce(
