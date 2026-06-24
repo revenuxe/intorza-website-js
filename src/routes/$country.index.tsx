@@ -7,22 +7,22 @@ import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
-import { getCountryByCode, countries } from "@/data/countries";
-import { getCitiesByCountry } from "@/data/cities";
+import { getCountryBySlug, countries } from "@/data/countries";
+import { getCitiesByCountrySlug } from "@/data/cities";
 import { SITE_URL } from "@/lib/site";
 import { hreflangLinks } from "@/lib/seo";
 import { breadcrumbListSchema } from "@/components/seo/Breadcrumbs";
 
 export const Route = createFileRoute("/$country/")({
   loader: ({ params }) => {
-    const country = getCountryByCode(params.country);
+    const country = getCountryBySlug(params.country);
     if (!country) throw notFound();
     return { country };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country } = loaderData;
-    const url = `${SITE_URL}/${country.code}`;
+    const url = `${SITE_URL}/${country.slug}`;
     return {
       meta: [
         { title: country.seoTitle },
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/$country/")({
       ],
       links: [
         { rel: "canonical", href: url },
-        ...hreflangLinks(`/${params.country}`),
+        ...hreflangLinks(`/${country.slug}`),
       ],
       scripts: [
         {
@@ -81,7 +81,7 @@ export const Route = createFileRoute("/$country/")({
 
 function CountryPage() {
   const { country } = Route.useLoaderData();
-  const cityList = getCitiesByCountry(country.code);
+  const cityList = getCitiesByCountrySlug(country.slug);
 
   return (
     <div className="min-h-screen bg-background">
@@ -106,7 +106,7 @@ function CountryPage() {
                   <Link
                     key={city.slug}
                     to="/$country/$city"
-                    params={{ country: country.code, city: city.slug }}
+                    params={{ country: country.slug, city: city.slug }}
                     className="px-4 py-2 rounded-full bg-card border border-border hover:border-primary hover:text-primary transition-colors"
                   >
                     {city.name}

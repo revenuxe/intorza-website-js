@@ -18,8 +18,11 @@ export const Route = createFileRoute("/sitemap.xml")({
         };
 
         for (const p of STATIC) push(p, p === "/" ? "daily" : "monthly", p === "/" ? "1.0" : "0.6");
-        for (const c of countries) push(`/${c.code}`, "weekly", "0.8");
-        for (const city of cities) push(`/${city.countryCode}/${city.slug}`, "weekly", "0.7");
+        for (const c of countries) push(`/${c.slug}`, "weekly", "0.8");
+        for (const city of cities) {
+          const c = countries.find((x) => x.code === city.countryCode);
+          if (c) push(`/${c.slug}/${city.slug}`, "weekly", "0.7");
+        }
 
         try {
           const { listPublishedPosts } = await import("@/lib/blog.functions");

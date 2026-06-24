@@ -1,5 +1,6 @@
 export interface CountryData {
   code: string;
+  slug: string;
   name: string;
   currency: string;
   currencySymbol: string;
@@ -14,6 +15,14 @@ export interface CountryData {
   seoKeywords: string;
 }
 
+const toSlug = (s: string): string =>
+  s
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const make = (
   code: string,
   name: string,
@@ -25,6 +34,7 @@ const make = (
   const display = shortName ?? name;
   return {
     code,
+    slug: toSlug(name),
     name,
     currency: "USD",
     currencySymbol: "$",
@@ -176,10 +186,15 @@ export const countries: CountryData[] = [
 ];
 
 export const getAllCountryCodes = (): string[] => countries.map((c) => c.code);
+export const getAllCountrySlugs = (): string[] => countries.map((c) => c.slug);
 export const getLocaleByCode = (code: string): string =>
   countries.find((c) => c.code === code.toLowerCase())?.locale || "en";
 export const getCountryByCode = (code: string): CountryData | undefined =>
   countries.find((c) => c.code === code.toLowerCase());
+export const getCountryBySlug = (slug: string): CountryData | undefined => {
+  const s = slug.toLowerCase();
+  return countries.find((c) => c.slug === s) || countries.find((c) => c.code === s);
+};
 
 export const getCountriesByRegion = (): Record<string, CountryData[]> =>
   countries.reduce(
