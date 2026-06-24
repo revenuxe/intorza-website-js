@@ -1,5 +1,6 @@
 export interface CountryData {
   code: string;
+  slug: string;
   name: string;
   currency: string;
   currencySymbol: string;
@@ -14,6 +15,14 @@ export interface CountryData {
   seoKeywords: string;
 }
 
+const toSlug = (s: string): string =>
+  s
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 const make = (
   code: string,
   name: string,
@@ -25,6 +34,7 @@ const make = (
   const display = shortName ?? name;
   return {
     code,
+    slug: toSlug(name),
     name,
     currency: "USD",
     currencySymbol: "$",
