@@ -10,9 +10,13 @@ export function hreflangLinks(currentPath = "/"): Array<{
   const links: Array<{ rel: "alternate"; hrefLang: string; href: string }> = countries.map((c) => ({
     rel: "alternate",
     hrefLang: c.locale,
-    href: `${SITE_URL}/${c.code}`,
+    href: `${SITE_URL}/${c.slug}`,
   }));
-  links.push({ rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}${currentPath === "/" ? "" : currentPath}` });
+  links.push({
+    rel: "alternate",
+    hrefLang: "x-default",
+    href: `${SITE_URL}${currentPath === "/" ? "" : currentPath}`,
+  });
   return links;
 }
 

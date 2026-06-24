@@ -7,22 +7,22 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ProCTA from "@/components/ProCTA";
 import CTASection from "@/components/CTASection";
 import Breadcrumbs, { breadcrumbListSchema } from "@/components/seo/Breadcrumbs";
-import { getCityBySlug } from "@/data/cities";
-import { getCountryByCode } from "@/data/countries";
+import { getCityByCountrySlug } from "@/data/cities";
+import { getCountryBySlug } from "@/data/countries";
 import { SITE_URL } from "@/lib/site";
 import { hreflangLinks } from "@/lib/seo";
 
 export const Route = createFileRoute("/$country/$city")({
   loader: ({ params }) => {
-    const country = getCountryByCode(params.country);
-    const city = getCityBySlug(params.country, params.city);
+    const country = getCountryBySlug(params.country);
+    const city = country ? getCityByCountrySlug(params.country, params.city) : undefined;
     if (!country || !city) throw notFound();
     return { country, city };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country, city } = loaderData;
-    const url = `${SITE_URL}/${city.countryCode}/${city.slug}`;
+    const url = `${SITE_URL}/${country.slug}/${city.slug}`;
     return {
       meta: [
         { title: city.seoTitle },
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/$country/$city")({
       ],
       links: [
         { rel: "canonical", href: url },
-        ...hreflangLinks(`/${params.country}/${params.city}`),
+        ...hreflangLinks(`/${country.slug}/${city.slug}`),
       ],
       scripts: [
         {
@@ -77,7 +77,7 @@ export const Route = createFileRoute("/$country/$city")({
           type: "application/ld+json",
           children: JSON.stringify(
             breadcrumbListSchema([
-              { name: country.name, url: `${SITE_URL}/${country.code}` },
+              { name: country.name, url: `${SITE_URL}/${country.slug}` },
               { name: city.name, url },
             ]),
           ),
@@ -97,8 +97,8 @@ function CityPage() {
         <div className="container-custom pt-28 pb-4">
           <Breadcrumbs
             items={[
-              { name: country.name, url: `${SITE_URL}/${country.code}` },
-              { name: city.name, url: `${SITE_URL}/${country.code}/${city.slug}` },
+              { name: country.name, url: `${SITE_URL}/${country.slug}` },
+              { name: city.name, url: `${SITE_URL}/${country.slug}/${city.slug}` },
             ]}
           />
         </div>

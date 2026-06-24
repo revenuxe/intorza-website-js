@@ -111,7 +111,7 @@ const Footer = () => {
                       </DropdownMenuLabel>
                       {regionCountries.map((c) => (
                         <DropdownMenuItem key={c.code} asChild>
-                          <Link to="/$country" params={{ country: c.code }} className="cursor-pointer">
+                          <Link to="/$country" params={{ country: c.slug }} className="cursor-pointer">
                             {c.name}
                           </Link>
                         </DropdownMenuItem>
@@ -132,7 +132,7 @@ const Footer = () => {
                 <Link
                   key={code}
                   to="/$country"
-                  params={{ country: code }}
+                  params={{ country: c.slug }}
                   className="text-xs px-3 py-1.5 rounded-full bg-secondary-foreground/5 text-secondary-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all"
                 >
                   {c.name}
