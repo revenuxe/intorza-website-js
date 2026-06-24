@@ -32,9 +32,9 @@ export const Route = createFileRoute("/privacy")({
             <h2 className="font-display text-2xl font-semibold text-foreground pt-4">Data Security</h2>
             <p>We encrypt data in transit (TLS 1.3) and at rest (AES-256), enforce access controls, and run regular security audits.</p>
             <h2 className="font-display text-2xl font-semibold text-foreground pt-4">Your Rights</h2>
-            <p>You may request access, correction, deletion, restriction, portability, or object to processing of your data. Contact us at privacy@intorza.com.</p>
+            <p>You may request access, correction, deletion, restriction, portability, or object to processing of your data. Contact us at intorza.com@gmail.com.</p>
             <h2 className="font-display text-2xl font-semibold text-foreground pt-4">Contact</h2>
-            <p>Questions? Email <a className="text-primary underline" href="mailto:privacy@intorza.com">privacy@intorza.com</a>.</p>
+            <p>Questions? Email <a className="text-primary underline" href="mailto:intorza.com@gmail.com">intorza.com@gmail.com</a>.</p>
           </div>
         </div>
       </main>
