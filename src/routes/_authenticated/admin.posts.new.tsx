@@ -3,7 +3,7 @@ import { PostForm } from "@/components/admin/PostForm";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/admin/posts/new")({
   component: NewPost,
