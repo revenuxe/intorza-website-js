@@ -10,7 +10,7 @@ import Breadcrumbs, { breadcrumbListSchema } from "@/components/seo/Breadcrumbs"
 import { getCityByCountrySlug } from "@/data/cities";
 import { getCountryBySlug } from "@/data/countries";
 import { SITE_URL } from "@/lib/site";
-import { hreflangLinks } from "@/lib/seo";
+import { hreflangLinks, socialImageMeta, faqPageSchema, homepageFaqs } from "@/lib/seo";
 
 export const Route = createFileRoute("/$country/$city")({
   loader: ({ params }) => {
@@ -32,6 +32,10 @@ export const Route = createFileRoute("/$country/$city")({
         { property: "og:description", content: city.seoDescription },
         { property: "og:url", content: url },
         { property: "og:locale", content: country.locale.replace("-", "_") },
+        { property: "og:type", content: "website" },
+        { name: "twitter:title", content: city.seoTitle },
+        { name: "twitter:description", content: city.seoDescription },
+        ...socialImageMeta(),
       ],
       links: [
         { rel: "canonical", href: url },
@@ -72,6 +76,10 @@ export const Route = createFileRoute("/$country/$city")({
             areaServed: { "@type": "City", name: city.name },
             serviceType: "Interior Design Software",
           }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(faqPageSchema(homepageFaqs)),
         },
         {
           type: "application/ld+json",

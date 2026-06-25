@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { getPostBySlug } from "@/lib/blog.functions";
 import { formatBlogContent, formatDate, estimateReadTime } from "@/lib/blog-format";
 import Breadcrumbs, { breadcrumbListSchema } from "@/components/seo/Breadcrumbs";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, SITE_OG_IMAGE } from "@/lib/site";
+import { socialImageMeta } from "@/lib/seo";
 
 const postQuery = (slug: string) =>
   queryOptions({
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/blog/$slug")({
     const post = loaderData.post;
     const url = `${SITE_URL}/blog/${params.slug}`;
     const description = post.excerpt || post.content.substring(0, 160);
+    const image = post.cover_image || SITE_OG_IMAGE;
     return {
       meta: [
         { title: `${post.title} | Intorza Blog` },
@@ -34,8 +36,12 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        ...(post.cover_image ? [{ property: "og:image", content: post.cover_image }] : []),
-        { name: "twitter:card", content: "summary_large_image" },
+        { property: "article:published_time", content: post.created_at },
+        { property: "article:modified_time", content: post.updated_at },
+        { property: "article:author", content: "Intorza" },
+        { name: "twitter:title", content: post.title },
+        { name: "twitter:description", content: description },
+        ...socialImageMeta(image, post.title),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -48,8 +54,8 @@ export const Route = createFileRoute("/blog/$slug")({
             description,
             datePublished: post.created_at,
             dateModified: post.updated_at,
-            image: post.cover_image,
-            author: { "@type": "Organization", name: "Intorza" },
+            image: [image],
+            author: { "@type": "Organization", name: "Intorza", url: SITE_URL },
             publisher: { "@type": "Organization", name: "Intorza", logo: { "@type": "ImageObject", url: `${SITE_URL}/intorza-logo.webp` } },
             mainEntityOfPage: { "@type": "WebPage", "@id": url },
           }),

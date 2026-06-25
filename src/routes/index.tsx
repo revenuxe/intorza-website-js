@@ -8,48 +8,42 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import { SITE_URL } from "@/lib/site";
-import { websiteSchema } from "@/lib/seo";
-import { hreflangLinks } from "@/lib/seo";
+import {
+  websiteSchema,
+  hreflangLinks,
+  socialImageMeta,
+  softwareAppSchema,
+  faqPageSchema,
+} from "@/lib/seo";
 
-const TITLE = "Best Interior Design Software 2025 | Free Quotation & Invoice Maker";
-const DESCRIPTION = "Intorza is an all-in-one interior design project management software. Create quotations, generate invoices, manage clients & team collaboration. Trusted by 500+ designers. Start Free!";
+const TITLE = "Best Interior Design Software 2025 | Free Quotation & Invoice Maker | Intorza";
+const DESCRIPTION =
+  "Intorza is the all-in-one interior design project management software. Create quotations, generate GST invoices, manage clients, projects & teams. Trusted by 500+ designers worldwide. Start Free!";
+const KEYWORDS =
+  "interior design software, quotation software for interior designers, invoice software for contractors, interior design project management, GST invoice software, modular kitchen software, site measurement app, interior CRM, design studio software, intorza";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { name: "keywords", content: "interior design software, quotation software, invoice software, interior design project management, GST invoice software" },
+      { name: "keywords", content: KEYWORDS },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
+      ...socialImageMeta(),
     ],
     links: [
       { rel: "canonical", href: SITE_URL },
       ...hreflangLinks("/"),
     ],
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(websiteSchema()),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          name: "Intorza",
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Web Browser",
-          offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock" },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "547", bestRating: "5" },
-          description: DESCRIPTION,
-          url: SITE_URL,
-        }),
-      },
+      { type: "application/ld+json", children: JSON.stringify(websiteSchema()) },
+      { type: "application/ld+json", children: JSON.stringify(softwareAppSchema()) },
+      { type: "application/ld+json", children: JSON.stringify(faqPageSchema()) },
     ],
   }),
   component: Index,
@@ -71,3 +65,4 @@ function Index() {
     </div>
   );
 }
+

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { listPublishedPosts } from "@/lib/blog.functions";
 import { formatDate, estimateReadTime } from "@/lib/blog-format";
 import { SITE_URL } from "@/lib/site";
+import { socialImageMeta } from "@/lib/seo";
 
 const postsQuery = queryOptions({
   queryKey: ["blog", "posts"],
@@ -26,6 +27,10 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: `${SITE_URL}/blog` },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      ...socialImageMeta(),
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/blog` }],
     scripts: [

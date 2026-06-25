@@ -1,0 +1,12 @@
+{
+  "name": "Intorza — Interior Design Project Management Software",
+  "short_name": "Intorza",
+  "description": "All-in-one interior design project management software for quotations, invoices, clients and team collaboration.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0F172A",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}
