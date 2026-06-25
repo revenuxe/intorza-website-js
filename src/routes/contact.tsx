@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Clock } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
+import { socialImageMeta } from "@/lib/seo";
 
 const TITLE = "Contact Us — Get in Touch with the Intorza Team";
 const DESCRIPTION = "Have questions about Intorza? Contact our team for support, partnerships, or general inquiries.";
@@ -16,6 +17,10 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: `${SITE_URL}/contact` },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      ...socialImageMeta(),
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
     scripts: [
@@ -26,6 +31,12 @@ export const Route = createFileRoute("/contact")({
           "@type": "ContactPage",
           name: TITLE,
           url: `${SITE_URL}/contact`,
+          mainEntity: {
+            "@type": "Organization",
+            name: "Intorza",
+            email: "intorza.com@gmail.com",
+            contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "intorza.com@gmail.com" },
+          },
         }),
       },
     ],

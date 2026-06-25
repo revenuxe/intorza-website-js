@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Target, Eye, Heart, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
+import { socialImageMeta } from "@/lib/seo";
 
 const TITLE = "About Intorza — Our Mission to Empower Interior Designers";
 const DESCRIPTION = "Learn about Intorza's mission to simplify business operations for interior designers and contractors. Discover our story, values, and commitment to the industry.";
@@ -16,6 +17,10 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: `${SITE_URL}/about` },
+      { property: "og:type", content: "website" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      ...socialImageMeta(),
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
     scripts: [

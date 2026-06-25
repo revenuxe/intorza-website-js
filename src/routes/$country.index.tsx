@@ -10,7 +10,7 @@ import CTASection from "@/components/CTASection";
 import { getCountryBySlug, countries } from "@/data/countries";
 import { getCitiesByCountrySlug } from "@/data/cities";
 import { SITE_URL } from "@/lib/site";
-import { hreflangLinks } from "@/lib/seo";
+import { hreflangLinks, socialImageMeta, softwareAppSchema, faqPageSchema, homepageFaqs } from "@/lib/seo";
 import { breadcrumbListSchema } from "@/components/seo/Breadcrumbs";
 
 export const Route = createFileRoute("/$country/")({
@@ -32,6 +32,10 @@ export const Route = createFileRoute("/$country/")({
         { property: "og:description", content: country.seoDescription },
         { property: "og:url", content: url },
         { property: "og:locale", content: country.locale.replace("-", "_") },
+        { property: "og:type", content: "website" },
+        { name: "twitter:title", content: country.seoTitle },
+        { name: "twitter:description", content: country.seoDescription },
+        ...socialImageMeta(),
       ],
       links: [
         { rel: "canonical", href: url },
@@ -40,21 +44,14 @@ export const Route = createFileRoute("/$country/")({
       scripts: [
         {
           type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: `Intorza - Interior Design Software ${country.name}`,
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Web Browser",
-            url,
-            offers: {
-              "@type": "Offer",
-              price: country.priceValue,
-              priceCurrency: country.currency,
-              availability: "https://schema.org/InStock",
-            },
-            aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "547", bestRating: "5" },
-          }),
+          children: JSON.stringify(
+            softwareAppSchema({
+              url,
+              price: String(country.priceValue),
+              currency: country.currency,
+              name: `Intorza — Interior Design Software ${country.name}`,
+            }),
+          ),
         },
         {
           type: "application/ld+json",
@@ -64,10 +61,15 @@ export const Route = createFileRoute("/$country/")({
             name: `Intorza ${country.name}`,
             description: country.seoDescription,
             url,
+            image: `${SITE_URL}/og-image.jpg`,
             areaServed: { "@type": "Country", name: country.name },
             priceRange: country.price,
             knowsLanguage: country.locale.split("-")[0],
           }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(faqPageSchema(homepageFaqs)),
         },
         {
           type: "application/ld+json",
