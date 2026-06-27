@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FolderOpen, Users } from "lucide-react";
-import dashboardPreview from "@/assets/dashboard-preview.png";
+import dashboardPreview from "@/assets/dashboard-preview.webp";
 import type { CountryData } from "@/data/countries";
 
 const CountryHeroSection = ({ country }: { country: CountryData }) => {

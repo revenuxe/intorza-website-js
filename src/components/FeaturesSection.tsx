@@ -2,14 +2,14 @@ import {
   LayoutDashboard, Ruler, FileText, Receipt, Users, UserPlus, BarChart3, Shield, ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import dashboardPreview from "@/assets/dashboard-preview.png";
-import quotationPreview from "@/assets/quotation-preview.png";
-import invoicePreview from "@/assets/invoice-preview.png";
-import clientsPreview from "@/assets/clients-preview.png";
-import teamPreview from "@/assets/team-preview.png";
-import myProjectPreview from "@/assets/my-project-preview.png";
-import myQuotationPreview from "@/assets/my-quotation-preview.png";
-import siteMeasurementPreview from "@/assets/site-measurement-preview.png";
+import dashboardPreview from "@/assets/dashboard-preview.webp";
+import quotationPreview from "@/assets/quotation-preview.webp";
+import invoicePreview from "@/assets/invoice-preview.webp";
+import clientsPreview from "@/assets/clients-preview.webp";
+import teamPreview from "@/assets/team-preview.webp";
+import myProjectPreview from "@/assets/my-project-preview.webp";
+import myQuotationPreview from "@/assets/my-quotation-preview.webp";
+import siteMeasurementPreview from "@/assets/site-measurement-preview.webp";
 
 const features = [
   { icon: LayoutDashboard, title: "Smart Dashboard", description: "Complete overview of your business with real-time metrics, revenue tracking, and project status.", color: "bg-blue-500/10 text-blue-600" },
