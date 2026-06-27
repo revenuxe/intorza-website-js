@@ -83,6 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico" },
       { rel: "apple-touch-icon", href: "/favicon.ico" },
       { rel: "manifest", href: "/site.webmanifest" },
+      { rel: "alternate", type: "application/rss+xml", title: "Intorza Blog (RSS)", href: "/rss.xml" },
+      { rel: "alternate", type: "application/atom+xml", title: "Intorza Blog (Atom)", href: "/atom.xml" },
       { rel: "dns-prefetch", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
