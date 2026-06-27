@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as CookiesRouteImport } from './routes/cookies'
@@ -28,6 +29,7 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as CountryCityRouteImport } from './routes/$country.$city'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as ApiPublicSeedBlogRouteImport } from './routes/api/public/seed-blog'
 import { Route as AuthenticatedAdminPostsIndexRouteImport } from './routes/_authenticated/admin.posts.index'
 import { Route as AuthenticatedAdminPostsNewRouteImport } from './routes/_authenticated/admin.posts.new'
 import { Route as AuthenticatedAdminPostsIdRouteImport } from './routes/_authenticated/admin.posts.$id'
@@ -40,6 +42,11 @@ const TermsRoute = TermsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RssDotxmlRoute = RssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RefundRoute = RefundRouteImport.update({
@@ -126,6 +133,11 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const ApiPublicSeedBlogRoute = ApiPublicSeedBlogRouteImport.update({
+  id: '/api/public/seed-blog',
+  path: '/api/public/seed-blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminPostsIndexRoute =
   AuthenticatedAdminPostsIndexRouteImport.update({
     id: '/posts/',
@@ -156,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/rss.xml': typeof RssDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$country/$city': typeof CountryCityRoute
@@ -163,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/$country/': typeof CountryIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/api/public/seed-blog': typeof ApiPublicSeedBlogRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/admin/posts/$id': typeof AuthenticatedAdminPostsIdRoute
   '/admin/posts/new': typeof AuthenticatedAdminPostsNewRoute
@@ -177,12 +191,14 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/rss.xml': typeof RssDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$country/$city': typeof CountryCityRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/$country': typeof CountryIndexRoute
   '/blog': typeof BlogIndexRoute
+  '/api/public/seed-blog': typeof ApiPublicSeedBlogRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/admin/posts/$id': typeof AuthenticatedAdminPostsIdRoute
   '/admin/posts/new': typeof AuthenticatedAdminPostsNewRoute
@@ -201,6 +217,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/refund': typeof RefundRoute
+  '/rss.xml': typeof RssDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$country/$city': typeof CountryCityRoute
@@ -208,6 +225,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/$country/': typeof CountryIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/api/public/seed-blog': typeof ApiPublicSeedBlogRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/admin/posts/$id': typeof AuthenticatedAdminPostsIdRoute
   '/_authenticated/admin/posts/new': typeof AuthenticatedAdminPostsNewRoute
@@ -226,6 +244,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/refund'
+    | '/rss.xml'
     | '/sitemap.xml'
     | '/terms'
     | '/$country/$city'
@@ -233,6 +252,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/$country/'
     | '/blog/'
+    | '/api/public/seed-blog'
     | '/admin/'
     | '/admin/posts/$id'
     | '/admin/posts/new'
@@ -247,12 +267,14 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/refund'
+    | '/rss.xml'
     | '/sitemap.xml'
     | '/terms'
     | '/$country/$city'
     | '/blog/$slug'
     | '/$country'
     | '/blog'
+    | '/api/public/seed-blog'
     | '/admin'
     | '/admin/posts/$id'
     | '/admin/posts/new'
@@ -270,6 +292,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/refund'
+    | '/rss.xml'
     | '/sitemap.xml'
     | '/terms'
     | '/$country/$city'
@@ -277,6 +300,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/$country/'
     | '/blog/'
+    | '/api/public/seed-blog'
     | '/_authenticated/admin/'
     | '/_authenticated/admin/posts/$id'
     | '/_authenticated/admin/posts/new'
@@ -295,8 +319,10 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundRoute: typeof RefundRoute
+  RssDotxmlRoute: typeof RssDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  ApiPublicSeedBlogRoute: typeof ApiPublicSeedBlogRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -313,6 +339,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rss.xml': {
+      id: '/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/rss.xml'
+      preLoaderRoute: typeof RssDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/refund': {
@@ -434,6 +467,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/api/public/seed-blog': {
+      id: '/api/public/seed-blog'
+      path: '/api/public/seed-blog'
+      fullPath: '/api/public/seed-blog'
+      preLoaderRoute: typeof ApiPublicSeedBlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin/posts/': {
       id: '/_authenticated/admin/posts/'
       path: '/posts'
@@ -523,8 +563,10 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   PrivacyRoute: PrivacyRoute,
   RefundRoute: RefundRoute,
+  RssDotxmlRoute: RssDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  ApiPublicSeedBlogRoute: ApiPublicSeedBlogRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
