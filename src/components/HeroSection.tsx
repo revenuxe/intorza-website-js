@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FolderOpen, Users } from "lucide-react";
-import dashboardPreview from "@/assets/dashboard-preview.png";
+import dashboardPreview from "@/assets/dashboard-preview.webp";
 
 interface Props {
   title?: React.ReactNode;
@@ -66,7 +66,7 @@ const HeroSection = ({ title, subtitle }: Props) => {
                 <div className="w-3 h-3 rounded-full bg-intorza-amber" />
                 <div className="w-3 h-3 rounded-full bg-intorza-green" />
               </div>
-              <img src={dashboardPreview} alt="Intorza dashboard preview" className="w-full h-auto" />
+              <img src={dashboardPreview} alt="Intorza dashboard preview" className="w-full h-auto" fetchPriority="high" decoding="async" width="1280" height="800" />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-card rounded-xl shadow-lg p-4 border border-border animate-float">
               <div className="text-2xl font-bold text-intorza-green">+45%</div>

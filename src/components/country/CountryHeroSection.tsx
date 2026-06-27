@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FolderOpen, Users } from "lucide-react";
-import dashboardPreview from "@/assets/dashboard-preview.png";
+import dashboardPreview from "@/assets/dashboard-preview.webp";
 import type { CountryData } from "@/data/countries";
 
 const CountryHeroSection = ({ country }: { country: CountryData }) => {
@@ -49,7 +49,7 @@ const CountryHeroSection = ({ country }: { country: CountryData }) => {
                 <div className="w-3 h-3 rounded-full bg-intorza-amber" />
                 <div className="w-3 h-3 rounded-full bg-intorza-green" />
               </div>
-              <img src={dashboardPreview} alt={`Intorza dashboard for ${country.name}`} className="w-full h-auto" />
+              <img src={dashboardPreview} alt={`Intorza dashboard for ${country.name}`} className="w-full h-auto" fetchPriority="high" decoding="async" width="1280" height="800" />
             </div>
             <div className="absolute -top-4 -right-4 bg-card rounded-xl shadow-lg p-4 border border-border">
               <div className="flex items-center gap-2">
