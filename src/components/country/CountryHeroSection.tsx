@@ -19,12 +19,12 @@ const CountryHeroSection = ({ country }: { country: CountryData }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <Button size="lg" asChild>
-                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">
                   Create Quotation <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">
                   <FolderOpen className="w-5 h-5 mr-2" />
                   My Projects
                 </a>

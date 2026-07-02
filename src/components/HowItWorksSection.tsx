@@ -43,7 +43,7 @@ const HowItWorksSection = () => (
 
       <div className="text-center mt-16">
         <Button size="lg" asChild>
-          <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">
             Start Your Free Trial <ArrowRight className="w-5 h-5 ml-2" />
           </a>
         </Button>

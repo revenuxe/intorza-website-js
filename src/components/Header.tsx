@@ -45,10 +45,10 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-4">
           <Button variant="ghost" asChild>
-            <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">Login</a>
+            <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">Login</a>
           </Button>
           <Button asChild>
-            <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">Create Quotation</a>
+            <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">Create Quotation</a>
           </Button>
         </div>
 
@@ -76,10 +76,10 @@ const Header = () => {
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
               <Button variant="outline" asChild className="w-full">
-                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">Login</a>
+                <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">Login</a>
               </Button>
               <Button asChild className="w-full">
-                <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">Create Quotation</a>
+                <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">Create Quotation</a>
               </Button>
             </div>
           </nav>

@@ -28,7 +28,7 @@ const CTASection = ({ countryName, trustedByText }: Props) => {
           </p>
           <div className="flex flex-wrap gap-4 justify-center mb-10">
             {actions.map((a) => (
-              <a key={a.label} href="https://app.intorza.com" target="_blank" rel="noopener noreferrer"
+              <a key={a.label} href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-primary-foreground/10 backdrop-blur-sm px-6 py-3 rounded-xl text-primary-foreground hover:bg-primary-foreground/20 transition-all duration-300 border border-primary-foreground/20 hover:scale-105">
                 <a.icon className="w-5 h-5" />
                 {a.label}
@@ -37,7 +37,7 @@ const CTASection = ({ countryName, trustedByText }: Props) => {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-              <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">
                 Get Started Now <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>

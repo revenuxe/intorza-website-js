@@ -46,7 +46,7 @@ const FeaturesSection = () => (
               </div>
               <div className="mt-6 text-center lg:text-left">
                 <Button size="lg" asChild className="group shadow-lg hover:shadow-xl">
-                  <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">
                     {s.ctaText}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </a>

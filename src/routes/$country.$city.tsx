@@ -130,7 +130,7 @@ function CityPage() {
               ))}
             </div>
             <a
-              href="https://app.intorza.com"
+              href="https://www.app.intorza.com"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-lg"
             >
               Start Free in {city.name}

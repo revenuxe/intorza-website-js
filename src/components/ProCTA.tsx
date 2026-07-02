@@ -34,7 +34,7 @@ const ProCTA = ({ price = "₹1", currency = "INR", countryName }: Props) => {
             Get unlimited quotations, advanced invoicing, team collaboration & priority support
           </p>
           <Button asChild size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-6 text-lg font-semibold rounded-xl shadow-2xl">
-            <a href="https://app.intorza.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.app.intorza.com/" target="_blank" rel="noopener noreferrer">
               <Sparkles className="w-5 h-5 mr-2 text-intorza-amber" />
               Get Pro Now
             </a>
