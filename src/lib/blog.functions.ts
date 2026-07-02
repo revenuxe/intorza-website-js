@@ -10,7 +10,13 @@ export type BlogPost = {
   created_at: string;
   updated_at: string;
   published: boolean;
+  category: string | null;
+  tags: string[] | null;
+  pillar_slug: string | null;
 };
+
+const POST_COLS =
+  "id, title, slug, excerpt, cover_image, content, created_at, updated_at, published, category, tags, pillar_slug";
 
 export const listPublishedPosts = createServerFn({ method: "GET" }).handler(
   async (): Promise<BlogPost[]> => {
