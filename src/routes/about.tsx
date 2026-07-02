@@ -128,7 +128,7 @@ function About() {
           <div className="container-custom text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-6">Ready to Join Our Community?</h2>
             <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90" asChild>
-              <a href="https://app.intorza.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.app.intorza.com" target="_blank" rel="noopener noreferrer">
                 Get Started Free <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
