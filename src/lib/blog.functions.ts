@@ -26,7 +26,7 @@ export const listPublishedPosts = createServerFn({ method: "GET" }).handler(
     if (!supabaseConfigured) return [];
     const { data, error } = await supabasePublic
       .from("blog_posts")
-      .select("id, title, slug, excerpt, cover_image, content, created_at, updated_at, published")
+      .select(POST_COLS)
       .eq("published", true)
       .order("created_at", { ascending: false });
     if (error) {
