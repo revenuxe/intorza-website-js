@@ -125,7 +125,7 @@ function BlogIndex() {
 
   const setTopic = (t: string) =>
     navigate({
-      search: (prev) => ({ ...prev, topic: t === "All" ? undefined : t }),
+      search: (prev: { topic?: string }) => ({ ...prev, topic: t === "All" ? undefined : t }),
       replace: true,
     });
 
