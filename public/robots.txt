@@ -20,5 +20,5 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Host: https://www.intorza.com
-Sitemap: https://www.intorza.com/sitemap.xml
+Host: https://www.app.intorza.com
+Sitemap: https://www.app.intorza.com/sitemap.xml
