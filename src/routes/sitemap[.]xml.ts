@@ -91,7 +91,14 @@ export const Route = createFileRoute("/sitemap.xml")({
           const posts = await listPublishedPosts();
           for (const post of posts) {
             const lastmod = (post.updated_at || post.created_at || today).split("T")[0];
-            push(`/blog/${post.slug}`, "weekly", "0.7", lastmod);
+            const img = post.cover_image
+              ? {
+                  loc: post.cover_image.startsWith("http") ? post.cover_image : `${SITE_URL}${post.cover_image}`,
+                  title: post.title,
+                  caption: post.excerpt || undefined,
+                }
+              : undefined;
+            push(`/blog/${post.slug}`, "weekly", "0.7", lastmod, undefined, img);
           }
         } catch (e) {
           console.error("[sitemap] failed to load posts", e);
@@ -99,7 +106,7 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
-          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`,
+          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">`,
           ...urls,
           `</urlset>`,
         ].join("\n");
