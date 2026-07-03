@@ -29,6 +29,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           priority: string,
           lastmod: string = today,
           alternates?: Array<{ hreflang: string; href: string }>,
+          image?: { loc: string; title?: string; caption?: string },
         ) => {
           const altXml = (alternates || [])
             .map(
@@ -36,6 +37,15 @@ export const Route = createFileRoute("/sitemap.xml")({
                 `    <xhtml:link rel="alternate" hreflang="${a.hreflang}" href="${a.href}" />`,
             )
             .join("\n");
+          const imageXml = image
+            ? [
+                `    <image:image>`,
+                `      <image:loc>${image.loc}</image:loc>`,
+                image.title ? `      <image:title>${image.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</image:title>` : null,
+                image.caption ? `      <image:caption>${image.caption.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</image:caption>` : null,
+                `    </image:image>`,
+              ].filter(Boolean).join("\n")
+            : "";
           urls.push(
             [
               `  <url>`,
@@ -44,6 +54,7 @@ export const Route = createFileRoute("/sitemap.xml")({
               `    <changefreq>${changefreq}</changefreq>`,
               `    <priority>${priority}</priority>`,
               altXml,
+              imageXml,
               `  </url>`,
             ]
               .filter(Boolean)
