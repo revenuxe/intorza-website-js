@@ -27,7 +27,8 @@ export const Route = createFileRoute("/blog/$slug")({
     const post = loaderData.post;
     const url = `${SITE_URL}/blog/${params.slug}`;
     const description = post.excerpt || post.content.substring(0, 160);
-    const image = post.cover_image || SITE_OG_IMAGE;
+    const rawImage = post.cover_image || SITE_OG_IMAGE;
+    const image = rawImage.startsWith("http") ? rawImage : `${SITE_URL}${rawImage}`;
     return {
       meta: [
         { title: `${post.title} | Intorza Blog` },
