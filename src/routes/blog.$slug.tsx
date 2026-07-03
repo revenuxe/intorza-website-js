@@ -40,6 +40,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "article:published_time", content: post.created_at },
         { property: "article:modified_time", content: post.updated_at },
         { property: "article:author", content: "Intorza" },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: post.title },
         { name: "twitter:description", content: description },
         ...socialImageMeta(image, post.title),
