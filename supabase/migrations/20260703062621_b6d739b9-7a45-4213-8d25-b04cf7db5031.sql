@@ -1,0 +1,4 @@
+UPDATE public.blog_posts SET cover_image = '/__l5e/assets-v1/378300eb-0733-4082-b1c4-9b748b8a2bfb/blog-quotation.webp' WHERE cover_image = '/__l5e/assets-v1/bf2623c2-7676-49ac-a870-fad639831c47/blog-quotation.jpg';
+UPDATE public.blog_posts SET cover_image = '/__l5e/assets-v1/2a380a39-6c62-480e-b60b-cf609e83c2c4/blog-gst.webp' WHERE cover_image = '/__l5e/assets-v1/b5925329-d736-4353-8bea-412efc1bab70/blog-gst.jpg';
+UPDATE public.blog_posts SET cover_image = '/__l5e/assets-v1/92c30a0e-0966-44b0-8d64-ec7ede6abb9d/blog-pm.webp' WHERE cover_image = '/__l5e/assets-v1/4f7e26d5-a8f8-44ae-b01d-816eb30e909a/blog-pm.jpg';
+UPDATE public.blog_posts SET cover_image = '/__l5e/assets-v1/db64fcf6-a9d8-43ab-9e6d-881df62c5f83/blog-generic.webp' WHERE cover_image = '/__l5e/assets-v1/83b5e3f4-91dd-407f-8c45-57c5301fbef7/blog-generic.jpg';
