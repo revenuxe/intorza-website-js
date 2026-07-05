@@ -1,4 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
+import { setResponseHeader } from "@tanstack/react-start/server";
+
+const BLOG_CACHE = "public, max-age=60, s-maxage=300, stale-while-revalidate=3600";
 
 export type BlogPost = {
   id: string;
@@ -20,6 +23,7 @@ const POST_COLS =
 
 export const listPublishedPosts = createServerFn({ method: "GET" }).handler(
   async (): Promise<BlogPost[]> => {
+    try { setResponseHeader("Cache-Control", BLOG_CACHE); } catch { /* client call */ }
     const { supabasePublic, supabaseConfigured } = await import(
       "@/lib/supabase-public.server"
     );
@@ -45,6 +49,7 @@ export const getPostBySlug = createServerFn({ method: "GET" })
     return { slug: input.slug.trim().toLowerCase() };
   })
   .handler(async ({ data }): Promise<{ post: BlogPost | null; related: BlogPost[] }> => {
+    try { setResponseHeader("Cache-Control", BLOG_CACHE); } catch { /* client call */ }
     const { supabasePublic, supabaseConfigured } = await import(
       "@/lib/supabase-public.server"
     );
