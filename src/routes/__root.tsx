@@ -85,7 +85,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "alternate", type: "application/rss+xml", title: "Intorza Blog (RSS)", href: "/rss.xml" },
       { rel: "alternate", type: "application/atom+xml", title: "Intorza Blog (Atom)", href: "/atom.xml" },
-      // Fonts are self-hosted via @fontsource — no external Google Fonts request.
+      // Fonts are self-hosted via @fontsource (imported in src/router.tsx).
+      { rel: "preconnect", href: "https://rehioexyiybgrxepajnb.supabase.co", crossOrigin: "anonymous" },
     ],
     scripts: [
       {
