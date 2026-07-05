@@ -49,6 +49,7 @@ export const getPostBySlug = createServerFn({ method: "GET" })
     return { slug: input.slug.trim().toLowerCase() };
   })
   .handler(async ({ data }): Promise<{ post: BlogPost | null; related: BlogPost[] }> => {
+    try { setResponseHeader("Cache-Control", BLOG_CACHE); } catch { /* client call */ }
     const { supabasePublic, supabaseConfigured } = await import(
       "@/lib/supabase-public.server"
     );
