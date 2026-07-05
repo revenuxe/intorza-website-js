@@ -26,39 +26,52 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/blog/")({
   validateSearch: searchSchema,
-  loader: ({ context }) => {
-    context.queryClient.ensureQueryData(postsQuery);
+  loader: async ({ context }) => {
+    const posts = await context.queryClient.ensureQueryData(postsQuery);
+    return { posts };
   },
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: `${SITE_URL}/blog` },
-      { property: "og:type", content: "website" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-      ...socialImageMeta(),
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/blog` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Blog",
-          name: "Intorza Blog",
-          url: `${SITE_URL}/blog`,
-          publisher: {
-            "@type": "Organization",
-            name: "Intorza",
-            logo: { "@type": "ImageObject", url: `${SITE_URL}/intorza-logo.webp` },
-          },
-        }),
-      },
-    ],
-  }),
+  head: ({ loaderData }) => {
+    // Preload the first 2 cover images (typically the pillar cards above the fold).
+    const covers = (loaderData?.posts ?? [])
+      .filter((p) => !p.pillar_slug && p.cover_image)
+      .slice(0, 2)
+      .map((p) => ({
+        rel: "preload" as const,
+        as: "image" as const,
+        href: p.cover_image!,
+        fetchpriority: "high" as const,
+      }));
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESCRIPTION },
+        { property: "og:title", content: TITLE },
+        { property: "og:description", content: DESCRIPTION },
+        { property: "og:url", content: `${SITE_URL}/blog` },
+        { property: "og:type", content: "website" },
+        { name: "twitter:title", content: TITLE },
+        { name: "twitter:description", content: DESCRIPTION },
+        ...socialImageMeta(),
+      ],
+      links: [{ rel: "canonical", href: `${SITE_URL}/blog` }, ...covers],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Intorza Blog",
+            url: `${SITE_URL}/blog`,
+            publisher: {
+              "@type": "Organization",
+              name: "Intorza",
+              logo: { "@type": "ImageObject", url: `${SITE_URL}/intorza-logo.webp` },
+            },
+          }),
+        },
+      ],
+    };
+  },
   component: BlogIndex,
   errorComponent: ({ reset }) => {
     const router = useRouter();
