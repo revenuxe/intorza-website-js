@@ -1,73 +1,72 @@
-# Migrate Intorza public pages to TanStack Start
+# Fix blog images + speed + country SEO + Supabase safety
 
-Source: Intorza Landing Page project (Vite + React Router + react-helmet, Tailwind v3, HSL tokens). Target: this TanStack Start app (Tailwind v4 + oklch). Migration is public-facing only — admin pages are skipped.
+Four things, in this order.
 
-## Open questions (please confirm)
+## 1. Blog images → Supabase Storage
 
-1. **Supabase blog data**: source uses project ref `rehioexyiybgrxepajnb`. Two options:
-   - **(A) Reuse the existing Supabase project read-only** — set `SUPABASE_URL` / `SUPABASE_PUBLISHABLE_KEY` as env in this project and call `blog_posts` from server functions. No data copy. Recommended.
-   - **(B) Enable Lovable Cloud here and re-create `blog_posts` table** — clean separation but requires data import.
-2. **Design tokens**: convert Tailwind v3 HSL tokens (`--primary: 14 56% 49%`) to Tailwind v4 `oklch()` in `src/styles.css`, keeping the same Intorza palette (orange/navy/cream). OK?
-3. **Domain for canonical/og/hreflang**: source hardcodes `https://intorza.com`. I'll keep that as the canonical domain. Confirm.
+**Why they're broken on www.intorza.com:** cover images live at `/__l5e/assets-v1/...` (Lovable's asset serving path). That prefix only resolves on Lovable-hosted domains. If `www.intorza.com` is pointed anywhere else (or hasn't picked up the latest deploy), those paths 404.
 
-## What gets migrated
+**Fix:**
+- Create a public bucket `blog-images`.
+- Server route `/api/public/migrate-blog-images?key=...` that:
+  - Downloads each unique `cover_image` from the current Lovable CDN URL
+  - Uploads to `blog-images/<slug>.webp`
+  - Updates `blog_posts.cover_image` to the Supabase public URL
+- After running once, remove the endpoint.
+- All future references become absolute HTTPS URLs on the Supabase CDN — they work on any domain, including social crawlers.
 
-### Routes (TanStack file-based)
-```
-src/routes/
-  __root.tsx               header/footer shell, global meta + Organization JSON-LD
-  index.tsx                Home (Intorza landing)
-  about.tsx                /about
-  contact.tsx              /contact
-  careers.tsx              /careers
-  privacy.tsx, terms.tsx, cookies.tsx, refund.tsx
-  blog.tsx                 layout w/ <Outlet/>
-  blog.index.tsx           /blog — server-loaded list
-  blog.$slug.tsx           /blog/:slug — server-loaded detail
-  $country.tsx             /:country layout
-  $country.index.tsx       country landing
-  $country.$city.tsx       city landing
-  sitemap[.]xml.ts         dynamic sitemap (home, statics, all countries × cities, all published posts)
-```
+RLS: public SELECT on the bucket, no insert/update from client.
 
-### Data & components copied from source
-- `src/data/countries.ts`, `src/data/cities.ts`, `src/data/cityBlogStrategy.ts` (verbatim)
-- Components: `Header`, `Footer`, `HeroSection`, `FeaturesSection`, `HowItWorksSection`, `TestimonialsSection`, `CTASection`, `ProCTA`, `FeedbackCTA`, `GeoRedirectBanner`, `NavLink`
-- Country components: `CountryHeroSection`, `CountryCTASection`, `CountryProCTA`, `CountryTestimonialsSection`
-- SEO components: `Breadcrumbs`, `SchemaMarkup`, `CountrySEOSchema`, `CitySEOSchema` (refactored — see below)
-- Assets under `src/assets/` (logo + screenshots)
+## 2. Speed pass
 
-### SEO model (TanStack-native, replaces react-helmet-async)
-- Per-route `head()` returns `meta`, `links` (canonical + **hreflang** for all 50+ country codes on home + country/city), and `scripts` (JSON-LD).
-- `og:image` only on leaf routes; never on `__root.tsx`.
-- Drop `SEOHead` / `<Helmet>` wrappers — emit tags through `head()`.
-- Schemas: Organization on root, WebSite on home, Article on blog detail, Service+LocalBusiness on country/city, BreadcrumbList where applicable.
+**LCP / first paint:**
+- Move Google Fonts from a runtime `<link>` in `__root.tsx` to `@fontsource` packages loaded in `src/main.tsx` (no render-blocking CSS request to fonts.googleapis.com).
+- Add `<link rel="preload">` for the hero image on `/` only.
+- Add `fetchpriority="high"` + `loading="eager"` on the hero `<img>`; keep `loading="lazy"` on everything below the fold (already done for blog cards).
+- Add `width`/`height` on all images so the browser reserves layout space (prevents CLS).
 
-### Data loading (SSR)
-- `src/lib/blog.functions.ts` — `listPosts` / `getPostBySlug` server fns using server publishable Supabase client (anon, RLS-respecting reads of `published=true`).
-- Route loaders use `context.queryClient.ensureQueryData(...)`; components use `useSuspenseQuery`.
-- Country/city data is static (imported from `src/data`) — no fetch needed; loader just resolves params and 404s on unknown slugs.
+**Blog list & post pages:**
+- Add `<link rel="preconnect">` to the Supabase Storage origin.
+- Cache headers on the Supabase-fetched posts via `Cache-Control: public, s-maxage=300, stale-while-revalidate=3600` on the server-fn response.
+- Serve blog list with a `changefreq=hourly` public cache header.
+- Use `sizes` + `srcset` where the image render size differs from source (pillar card vs card grid).
 
-### Style migration
-- Translate source `index.css` palette to `src/styles.css` `@theme inline` + `:root`/`.dark` blocks in `oklch()`.
-- Port custom utilities: `.text-gradient`, `.card-elevated`, `.section-padding`, `.container-custom`, blog rich-text styles, animations, gradients, shadows.
-- Add Outfit + Plus Jakarta Sans via `<link>` in `__root.tsx` head (Tailwind v4 can't `@import` remote in CSS).
-- Map `font-display` → Outfit, `font-sans` → Plus Jakarta Sans.
+**Navigation:**
+- TanStack Router already prefetches on hover — verify `defaultPreload="intent"` is set; enable it if not.
+- Confirm `defaultPreloadStaleTime` is sensible so hovering doesn't re-fetch on every intent.
 
-### Replacements
-- `react-router-dom` `<Link to>` / `useNavigate` → `@tanstack/react-router`.
-- `react-helmet-async` `<Helmet>` / `<SEOHead>` → route `head()`.
-- `supabase` browser client direct-fetch in components → server fn + suspense query.
-- `useEffect` data fetching → loader + suspense.
+## 3. Country-wise SEO on `/$country` and `/$country/$city`
 
-### Out of scope
-Admin routes (`/admin/*`), auth, `useAuth`, `Toaster`, contact form submission backend (form will display but POST stays no-op unless you ask).
+Both routes exist. Add per-route meta and JSON-LD keyed by the params:
+
+- Per-country/city `title`, `description`, `og:title`, `og:description`, `og:url`, `canonical`.
+- Localised copy (e.g. GST/HSN for India, VAT for UAE, sales tax for US).
+- `hreflang` links on `/$country` pages (`en-in`, `en-us`, `en-ae`, etc. + `x-default`).
+- JSON-LD:
+  - `LocalBusiness` / `Service` schema per country page with `areaServed` = country name.
+  - `Service` + `BreadcrumbList` on city pages.
+- Add each `/$country` and `/$country/$city` to the sitemap.
+
+## 4. Supabase pause protection
+
+Free-tier Supabase projects pause after **7 days of no activity** — not usage-related. Two safeguards:
+
+- The blog list SSR query already runs on every visit, so a live site with traffic won't pause. But for insurance:
+- Add pg_cron in a migration to run a lightweight `SELECT 1 FROM blog_posts LIMIT 1` weekly.
+- Enable `pg_cron` extension in the migration.
+
+If the user is on a paid plan this is unnecessary but harmless.
 
 ## Technical notes
 
-- Auth-protected server fns are NOT used — all reads are public via server publishable client with narrow `TO anon` policy on `blog_posts` (already in place on source).
-- 404s on unknown country/city/slug throw `notFound()`; route declares `notFoundComponent` and `errorComponent`.
-- Sitemap entries: `/`, statics, every `countries[].code`, every `cities[]` entry, every published post slug.
-- hreflang: country home + city emit `<link rel="alternate" hreflang="<locale>" href="https://intorza.com/<code>">` for every country, plus `x-default` → `/`.
+- **Migration endpoint** uses `supabaseAdmin` inside the handler, guarded by a shared secret in the query string. Deleted after successful run.
+- **Bucket policies:** `public: true`, read-only from client (RLS on storage.objects blocks anon writes — default).
+- **Font swap:** removes external CSS request, saves ~150–300ms on first paint on cold connections.
+- **Cache-Control on server fns:** implemented with `setResponseHeader` from `@tanstack/react-start/server`.
+- **hreflang:** added via `links` in each `/$country` route's `head()`, generated from `src/data/countries.ts`.
 
-Reply with answers to the 3 questions and I'll execute.
+## Confirmations before I start
+
+- **Fonts:** currently Outfit + Plus Jakarta Sans. I'll swap to `@fontsource/outfit` + `@fontsource/plus-jakarta-sans` — same fonts, faster load. OK?
+- **Country list:** I'll use whatever is already in `src/data/countries.ts` (India, US, UAE, UK, etc.).
+- **Migration endpoint secret:** I'll reuse the pattern already used by `/api/public/seed-blog` (query-string key). OK.
