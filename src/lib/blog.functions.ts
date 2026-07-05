@@ -23,6 +23,7 @@ const POST_COLS =
 
 export const listPublishedPosts = createServerFn({ method: "GET" }).handler(
   async (): Promise<BlogPost[]> => {
+    try { setResponseHeader("Cache-Control", BLOG_CACHE); } catch { /* client call */ }
     const { supabasePublic, supabaseConfigured } = await import(
       "@/lib/supabase-public.server"
     );
