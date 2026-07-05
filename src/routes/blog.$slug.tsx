@@ -45,7 +45,17 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "twitter:description", content: description },
         ...socialImageMeta(image, post.title),
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: [
+        { rel: "canonical", href: url },
+        ...(post.cover_image
+          ? [{
+              rel: "preload" as const,
+              as: "image" as const,
+              href: image,
+              fetchpriority: "high" as const,
+            }]
+          : []),
+      ],
       scripts: [
         {
           type: "application/ld+json",
