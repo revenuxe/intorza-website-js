@@ -85,13 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "manifest", href: "/site.webmanifest" },
       { rel: "alternate", type: "application/rss+xml", title: "Intorza Blog (RSS)", href: "/rss.xml" },
       { rel: "alternate", type: "application/atom+xml", title: "Intorza Blog (Atom)", href: "/atom.xml" },
-      { rel: "dns-prefetch", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
-      },
+      // Fonts are self-hosted via @fontsource — no external Google Fonts request.
     ],
     scripts: [
       {
