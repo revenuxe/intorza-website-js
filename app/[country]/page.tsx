@@ -19,7 +19,7 @@ export function generateStaticParams() { return countries.map(({ slug }) => ({ c
 export async function generateMetadata({ params }: { params: Promise<{ country: string }> }): Promise<Metadata> {
   const country = getCountryBySlug((await params).country); if (!country) return {};
   const url = `${SITE_URL}/${country.slug}`;
-  return { title: country.seoTitle, description: country.seoDescription, keywords: country.seoKeywords, alternates: { canonical: url }, robots: { index: false, follow: true }, openGraph: { title: country.seoTitle, description: country.seoDescription, url, locale: country.locale.replace("-", "_") } };
+  return { title: country.seoTitle, description: country.seoDescription, keywords: country.seoKeywords, alternates: { canonical: url }, robots: { index: true, follow: true }, openGraph: { title: country.seoTitle, description: country.seoDescription, url, locale: country.locale.replace("-", "_") } };
 }
 export default async function CountryPage({ params }: { params: Promise<{ country: string }> }) {
   const country = getCountryBySlug((await params).country); if (!country) notFound(); const cities = getCitiesByCountrySlug(country.slug); const url = `${SITE_URL}/${country.slug}`;
