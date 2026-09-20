@@ -42,7 +42,7 @@ const FeaturesSection = () => (
             <div className={s.reverse ? "lg:order-2" : "lg:order-1"}>
               <div className="relative group">
                 <div className={`absolute -inset-4 ${s.colorClass} rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
-                <img src={s.image} alt={s.title} loading="lazy" decoding="async" className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 w-full h-auto object-cover object-top" />
+                <img src={s.image.src} alt={s.title} loading="lazy" decoding="async" className="relative rounded-2xl shadow-lg border border-border group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 w-full h-auto object-cover object-top" />
               </div>
               <div className="mt-6 text-center lg:text-left">
                 <Button size="lg" asChild className="group shadow-lg hover:shadow-xl">

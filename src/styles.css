@@ -1,8 +1,20 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
+@source "../app";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition { animation: page-enter 180ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { animation: none; }
+}
 
 /* Intorza design system — light theme only by default. */
 @theme inline {

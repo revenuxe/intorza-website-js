@@ -135,13 +135,6 @@ export function softwareAppSchema(opts?: { url?: string; price?: string; currenc
       priceCurrency: opts?.currency ?? "USD",
       availability: "https://schema.org/InStock",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "547",
-      bestRating: "5",
-      worstRating: "1",
-    },
     featureList: [
       "Quotation Builder",
       "Invoice Generator",

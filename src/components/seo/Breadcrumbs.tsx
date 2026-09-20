@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 
@@ -14,7 +14,7 @@ interface Props {
 
 const Breadcrumbs = ({ items, className = "" }: Props) => (
   <nav aria-label="Breadcrumb" className={`flex items-center gap-2 text-sm text-muted-foreground ${className}`}>
-    <Link to="/" className="flex items-center gap-1 hover:text-primary transition-colors" aria-label="Home">
+    <Link href="/" className="flex items-center gap-1 hover:text-primary transition-colors" aria-label="Home">
       <Home className="w-4 h-4" />
       <span className="sr-only">Home</span>
     </Link>

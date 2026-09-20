@@ -1,5 +1,7 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import intorzaLogo from "@/assets/intorza-logo.webp";
@@ -27,15 +29,15 @@ const Header = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={intorzaLogo} alt="Intorza" className="h-10 md:h-12 w-auto object-contain" />
+        <Link href="/" className="flex items-center gap-2" aria-label="Intorza home">
+          <img src={intorzaLogo.src} alt="Intorza" className="h-7 sm:h-8 md:h-10 w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
           {internal.map((link) => (
             <Link
               key={link.label}
-              to={link.to}
+              href={link.to}
               className="text-foreground/80 hover:text-primary font-medium transition-colors"
             >
               {link.label}
@@ -53,7 +55,7 @@ const Header = () => {
         </div>
 
         <button
-          className="lg:hidden p-2"
+          className="lg:hidden rounded-lg p-2 text-foreground hover:bg-muted transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -67,7 +69,7 @@ const Header = () => {
             {internal.map((link) => (
               <Link
                 key={link.label}
-                to={link.to}
+                href={link.to}
                 className="text-foreground/80 hover:text-primary font-medium py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

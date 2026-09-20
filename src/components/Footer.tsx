@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { Mail, MapPin, Linkedin, Twitter, Instagram, Globe, ChevronDown } from "lucide-react";
 import intorzaLogo from "@/assets/intorza-logo.webp";
 import { countries, getCountriesByRegion } from "@/data/countries";
@@ -39,7 +39,7 @@ const Footer = () => {
       <div className="container-custom">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
-            <img src={intorzaLogo} alt="Intorza" className="h-12 w-auto mb-6 brightness-0 invert" />
+            <img src={intorzaLogo.src} alt="Intorza" className="h-12 w-auto mb-6 brightness-0 invert" />
             <p className="text-secondary-foreground/70 mb-6 max-w-sm">
               Streamline your interior business operations with Intorza. From site measurements to
               invoices, manage everything in one place.
@@ -70,7 +70,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {company.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-secondary-foreground/70 hover:text-primary transition-colors">{link.label}</Link>
+                  <Link href={link.to} className="text-secondary-foreground/70 hover:text-primary transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -81,7 +81,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {legal.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-secondary-foreground/70 hover:text-primary transition-colors">{link.label}</Link>
+                  <Link href={link.to} className="text-secondary-foreground/70 hover:text-primary transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -111,7 +111,7 @@ const Footer = () => {
                       </DropdownMenuLabel>
                       {regionCountries.map((c) => (
                         <DropdownMenuItem key={c.code} asChild>
-                          <Link to="/$country" params={{ country: c.slug }} className="cursor-pointer">
+                          <Link href={`/${c.slug}`} className="cursor-pointer">
                             {c.name}
                           </Link>
                         </DropdownMenuItem>
@@ -131,8 +131,7 @@ const Footer = () => {
               return (
                 <Link
                   key={code}
-                  to="/$country"
-                  params={{ country: c.slug }}
+                  href={`/${c.slug}`}
                   className="text-xs px-3 py-1.5 rounded-full bg-secondary-foreground/5 text-secondary-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all"
                 >
                   {c.name}

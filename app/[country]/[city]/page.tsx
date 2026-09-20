@@ -1,0 +1,19 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FeaturesSection from "@/components/FeaturesSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ProCTA from "@/components/ProCTA";
+import CTASection from "@/components/CTASection";
+import DashboardShowcase from "@/components/DashboardShowcase";
+import Breadcrumbs, { breadcrumbListSchema } from "@/components/seo/Breadcrumbs";
+import { countries, getCountryBySlug } from "@/data/countries";
+import { cities, getCityByCountrySlug } from "@/data/cities";
+import { SITE_URL } from "@/lib/site";
+
+export const revalidate = 3600;
+export function generateStaticParams() { return cities.map((city) => ({ country: getCountryBySlug(city.countryCode)?.slug, city: city.slug })).filter((path): path is { country: string; city: string } => Boolean(path.country)); }
+export async function generateMetadata({ params }: { params: Promise<{ country: string; city: string }> }): Promise<Metadata> { const p = await params; const country = getCountryBySlug(p.country); const city = getCityByCountrySlug(p.country, p.city); if (!country || !city) return {}; const url = `${SITE_URL}/${p.country}/${p.city}`; return { title: city.seoTitle, description: city.seoDescription, keywords: city.seoKeywords, alternates: { canonical: url }, robots: { index: false, follow: true }, openGraph: { title: city.seoTitle, description: city.seoDescription, url, locale: country.locale.replace("-", "_") } }; }
+export default async function CityPage({ params }: { params: Promise<{ country: string; city: string }> }) { const p = await params; const country = getCountryBySlug(p.country); const city = getCityByCountrySlug(p.country, p.city); if (!country || !city) notFound(); const url = `${SITE_URL}/${country.slug}/${city.slug}`; return <div className="min-h-screen bg-background"><Header /><main><div className="container-custom pt-28 pb-4"><Breadcrumbs items={[{ name: country.name, url: `${SITE_URL}/${country.slug}` }, { name: city.name, url }]} /></div><section className="py-12 lg:py-20 bg-gradient-to-br from-background via-primary/5 to-background"><div className="container-custom max-w-5xl text-center"><div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"><span className="text-sm font-medium text-primary">{city.trustedByText}</span></div><h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Interior Design Software for <span className="text-primary">{city.name}</span></h1><DashboardShowcase alt={`Intorza dashboard for ${city.name}`} className="my-10 md:my-12" /><p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">{city.heroSubtitle}</p><div className="flex flex-wrap justify-center gap-2 mb-8">{city.landmarks.map((landmark) => <span key={landmark} className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm">{landmark}</span>)}</div><a href="https://www.app.intorza.com" className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-lg">Start Free in {city.name}</a></div></section><FeaturesSection /><HowItWorksSection /><TestimonialsSection countryName={city.name} /><ProCTA price={country.price} currency={country.currency} countryName={city.name} /><CTASection countryName={city.name} trustedByText={city.trustedByText} /></main><Footer /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbListSchema([{ name: country.name, url: `${SITE_URL}/${country.slug}` }, { name: city.name, url }])) }} /></div>; }
